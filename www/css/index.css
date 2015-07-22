@@ -223,13 +223,13 @@ input::-webkit-input-placeholder {
 }
 
 #buscador input[type=search] {
-	background: rgba(237,237,237,0.80) url(../img/lupa.png) no-repeat 14px center;
+	background: rgba(237,237,237,0.80) url(../img/lupa.png) no-repeat 14px;
 	border: 1px solid #CCC;
 	padding: 9px 15px 9px 32px;
-	width: 50px;
+	width: 20px;
 	border-radius: 50px;
 	transition: all 0.5s ease 0s;
-	height: 50px;
+	height: 30px;
 	
 	-webkit-border-radius: 10em;
 	-moz-border-radius: 10em;
