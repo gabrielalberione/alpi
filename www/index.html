@@ -43,14 +43,14 @@
             </div>
 	        <div id="test" style="display:none;z-index:100; width:100%; border-top: solid 2px #e5e5e5;">
             	<div style="padding: 10px; height: 100px;">
-	                <div style="float:left;"><img src="img/demo.png" style="height: 80px;"></div>
+	                <div style="float:left;"><img src="img/demo.png" style="height: 80px;border-radius: 10px;"></div>
                     <div style="float:left; margin-left: 10px;"> 
-                    	<h4>Demo de un punto</h4>
+                    	<h4 style="margin-top: 0px;">Demo de un punto</h4>
                         <span>Acá iria una descripción...</span>
                     </div>
                 </div>
                 <div style="border-top: solid 2px #e5e5e5; width:100%; text-align: center;">
-                	<i id="marker_flecha" class="fa fa-sort-desc" style="margin: 10px;"></i>
+                	<i id="marker_flecha" class="fa fa-arrow-down" style="margin: 10px;"></i>
                 </div>
                 <div id="marker_detalle" style="display: none;">
                 	<p style="font-size: 14px;"><b>Info mas detallada</b></p>
@@ -96,13 +96,13 @@
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
            if(direction == "down"){
 			   $("#marker_detalle").show("slow");
-			   $("#marker_flecha").attr('class', 'fa fa-sort-asc');
+			   $("#marker_flecha").attr('class', 'fa fa-arrow-up');
 			   bandera_marker_detalle = true;
 		   }
            if(direction == "up"){
 			   if(bandera_marker_detalle){
 				   $("#marker_detalle").hide("slow");
-				   $("#marker_flecha").attr('class', 'fa fa-sort-desc');			   
+				   $("#marker_flecha").attr('class', 'fa fa-arrow-down');			   
 			   }else{
 				   $("#test").toggle("slow");
 			   }
