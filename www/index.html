@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    
+    <title>ALPI</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ol.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+     <div class="spinner" style="display: none;" id="splashLoading">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+          <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
+        </div>
+	<style>
+    .ol-zoom{
+        display: none;
+    }
+    .ol-attribution{
+        display: none;
+    }
+    .ol-rotate{
+        top: auto;
+        bottom: 170px;
+        right: 18px;
+        display: none;
+    }
+    
+    img { display:inline;}
+    </style>
+	<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #FEFEFE;">
+     	<div class="container">
+        	<div style="height: 50px;">
+                <div id="top_logo" style="float:left;"><img src="img/logo.jpg" style="height: 40px;"></div>
+                <div id="top_titulo"><p>ALPI</p></div>
+            </div>
+	        <div id="test" style="display:none;z-index:100; width:100%; border-top: solid 2px #e5e5e5;">
+            	<div style="padding: 10px; height: 100px;">
+	                <div style="float:left;"><img src="img/demo.png" style="height: 80px;"></div>
+                    <div style="float:left; margin-left: 10px;"> 
+                    	<h4>Demo de un punto</h4>
+                        <span>Acá iria una descripción...</span>
+                    </div>
+                </div>
+                <div style="border-top: solid 2px #e5e5e5; width:100%; text-align: center;">
+                	<i id="marker_flecha" class="fa fa-sort-desc" style="margin: 10px;"></i>
+                </div>
+                <div id="marker_detalle" style="display: none;">
+                	<p style="font-size: 14px;"><b>Info mas detallada</b></p>
+                    <p><b>Direccion:</b> Calle Falsa 123</p>
+                    <p><b>Telefono:</b> 011-15525346</p>
+                    <p><b>E-Mail:</b> demotracion@alpi.com.ar</p>                                        
+                </div>
+            </div>
+    	</div>
+    </nav>
+	<div data-snap-ignore="true">
+          
+        <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
+            <button type="button" class="btn btn-primary boton_verde_alpi" onclick="centrarMiPosicion()" 
+            style="border-radius: 80px; height: 50px; width: 50px;">
+                <i class="fa fa-crosshairs"></i>
+            </button>
+        </div>   
+        <div class="btn-group" style="z-index:1000; float:left; position:absolute; bottom:10px; left:10px">
+            <button type="button" class="btn btn-primary boton_verde_alpi" onclick="demoPunto()" 
+            style="border-radius: 80px; height: 50px; width: 50px;">
+                <i class="fa fa-info"></i>
+            </button>
+        </div>           
+        <div style="z-index:1000; position:absolute; top:60px; left:10px; width:98%;">
+            <form id="buscador" style="margin-right: 10px;">
+                <input type="search" placeholder="¿Que necesitas?">
+            </form>
+        </div>
+        <div id="map" style="width:100%;height:100%;"></div>
+    </div>
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>    
+    <script type="text/javascript" src="js/jquery.js"></script>		
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>	        
+    <script type="text/javascript" src="js/ol.js"></script>	
+    <script type="text/javascript" src="js/mapa.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript">
+      app.initialize();
+	  $("#test").swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+           if(direction == "down"){
+			   $("#marker_detalle").show("slow");
+			   $("#marker_flecha").attr('class', 'fa fa-sort-asc');
+			   bandera_marker_detalle = true;
+		   }
+           if(direction == "up"){
+			   if(bandera_marker_detalle){
+				   $("#marker_detalle").hide("slow");
+				   $("#marker_flecha").attr('class', 'fa fa-sort-desc');			   
+			   }else{
+				   $("#test").toggle("slow");
+			   }
+			   bandera_marker_detalle = false;
+		   }		   
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:0
+      });
+	  bandera_marker_detalle = false;
+	  function demoPunto(){
+		  $("#test").toggle();
+	  }
+    </script>	
+</body>
+</html>
