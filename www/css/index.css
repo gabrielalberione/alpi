@@ -179,92 +179,74 @@ h1 {
 
 .boton_verde_alpi{
 	background-color: rgba(109,194,183,0.70);
-	border-color: rgba(109,194,183,0.70);
+	border-color: rgba(109,194,183,1);
 }
 
 .boton_verde_alpi:hover{
 	background-color: rgba(65,136,126,0.70);
-	border-color: rgba(65,136,126,0.70);	
+	border-color: rgba(65,136,126,1);	
 }
 
+.boton_blanco{
+	background-color: rgba(255,255,255,0.70);
+	border-color: rgba(255,255,255,0.70);
+	color: #41887E;
+	font-size: 22px;
+}
+
+.boton_blanco:hover{
+	background-color: rgba(177,173,173,0.70);
+	border-color: rgba(177,173,173,0.70);
+}
 
 #top_titulo{
-	margin-top: 15px;
-	float: left;
+	margin-top: -1px;
 	margin-left: 12px;
-	font-size: 15px;
+	font-size: 16px;
 	color: #6DC2B7;
-	font-weight: 600;	
+	font-weight: 900;
+	margin: auto;
+	text-align: center;
+	padding-top: 14px;
 }
 
 #top_logo{
-	float: left;
+	float: right;
 	margin: 5px;
 }
 
-/* BUSCAR */
-
-input {
-	outline: none;
-}
-input[type=search] {
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	font-family: inherit;
-	font-size: 100%;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none; /* remove the search and cancel icon */
+.top_btn_menu{
+	font-size: 24px;
+	color: rgba(109, 194, 183,1);
+	margin-top: 9px;
+	float:left;	
 }
 
+.fondo_top{
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+}
 
-/* placeholder */
-input:-moz-placeholder {
-	color: #999;
-}
-input::-webkit-input-placeholder {
-	color: #999;
+.menu{
+	background-color: #ededed !important;
+	margin-top: 50px !important;
 }
 
-#buscador input[type=search] {
-	background: rgba(237,237,237,0.80) url(../img/lupa.png) no-repeat 14px;
-	border: 1px solid #CCC;
-	padding: 9px 15px 9px 32px;
-	width: 20px;
-	border-radius: 50px;
-	transition: all 0.5s ease 0s;
-	height: 30px;
-	
-	-webkit-border-radius: 10em;
-	-moz-border-radius: 10em;
-	border-radius: 10em;
-	
-	-webkit-transition: all .5s;
-	-moz-transition: all .5s;
-	transition: all .5s;	padding-left: 10px;
-	color: transparent;
-	cursor: pointer;
+.search input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px #41887E;
+  transition: border 0.3s;
+  background-color: transparent;
+  width: 100%;
 }
-#buscador input[type=search]:hover {
-	width: 100%;
-	background-color: #fff;
-	border-color: #6dcff6;
-	
-	-webkit-box-shadow: 0 0 5px rgba(65,136,126,.5);
-	-moz-box-shadow: 0 0 5px rgba(65,136,126,.5);
-	box-shadow: 0 0 5px rgba(65,136,126,.5);
-}
-#buscador input[type=search]:focus {
-	width: 100%;
-	padding-left: 45px;
-	color: #000;
-	background-color: #fff;
-	cursor: auto;
-}
-#buscador input:-moz-placeholder {
-	color: transparent;
-}
-#buscador input::-webkit-input-placeholder {
-	color: transparent;
+.search input[type="text"]:focus,
+.search input[type="text"].focus {
+  border-bottom: solid 2px #969696;
 }

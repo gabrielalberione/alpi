@@ -94,7 +94,7 @@ function inicializar(){
 	/**/
 	
 	map = new ol.Map({
-		target: 'map',
+		target: 'map',		
 		layers: layersBases,
 		view: view
 	});
