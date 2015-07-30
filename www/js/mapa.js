@@ -5,8 +5,8 @@ var urlTile;
 var urlWMS;
 var mapFile;
 
-var posActual = [-6115346.57498699, -4155607.5112465755];
-var posInicial = [-6115346.57498699, -4155607.5112465755];
+var posActual = [-6506141.183454158, -4110246.2464916063];
+var posInicial = [-6506141.183454158, -4110246.2464916063];
 var featurePosActual;
 
 var opClick = 0;
@@ -100,7 +100,7 @@ function inicializar(){
 	});
 	
 	map.on('click', function(evt) {
-		displayFeatureInfo(evt.pixel);
+		//displayFeatureInfo(evt.pixel);
 	});
 	
 	view.setCenter(posInicial);
@@ -132,7 +132,7 @@ function puntoGPS(xparam, yparam){
 		var iconStyle = new ol.style.Style({
 			image: new ol.style.Icon(({
 				opacity: 0.75,
-				src: urlFiles+'iconos/mi_ballon.png'
+				src: 'iconos/mi_ballon.png'
 			}))
 		});
 		

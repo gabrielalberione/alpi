@@ -66,21 +66,22 @@
             </div>
     	</div>
         
-        <div class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000; padding: 10px;">
-        <div class="row">
-            <div class="col-xs-12" style="margin-top: 20px; margin-bottom: 35px; padding-left: 55px; padding-right: 55px;">
-                <img src="img/logo_completo.png" class="img-responsive">
-            </div>
-            <div class="col-xs-10 search">
-                <input id="search" name="search" type="text" placeholder="Que estas buscando?">
-            </div>
-            <div class="col-xs-2">
-                <button type="button" class="btn btn-primary boton_verde_alpi" onclick="centrarMiPosicion()" 
-                style="border-radius: 40px; height: 40px; width: 40px; float:right;">
-                    <i class="fa fa-search" style="margin-left:-1px;"></i>
-                </button>
-            </div>
-        </div>     
+        <div class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
+			<div class="row" style="padding: 10px;">
+				<div class="col-xs-12" style="margin-top: 20px; margin-bottom: 35px; padding-left: 55px; padding-right: 55px;">
+					<img src="img/logo_completo.png" class="img-responsive">
+				</div>
+				<div class="col-xs-10 search">
+					<input id="search" name="search" type="text" placeholder="Que estas buscando?">
+				</div>
+				<div class="col-xs-2">
+					<button type="button" class="btn btn-primary boton_verde_alpi" onclick="centrarMiPosicion()" 
+					style="border-radius: 40px; height: 40px; width: 40px; float:right;">
+						<i class="fa fa-search" style="margin-left:-1px;"></i>
+					</button>
+				</div>
+			</div>
+		</div>  		
     </nav>
 	<div data-snap-ignore="true">
           
@@ -98,11 +99,11 @@
         </div>           
         <div id="map" style="width:100%;height:100%;z-index:2000;"></div>
     </div>
-	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>	        
+    <script type="text/javascript" src="js/ol.js"></script>	
     <script type="text/javascript" src="js/index.js"></script>    
     <script type="text/javascript" src="js/jquery.js"></script>		
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>	        
-    <script type="text/javascript" src="js/ol.js"></script>	
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mapa.js"></script>
 	<script type="text/javascript" src="js/jAlert-functions.min.js"></script>
     <script type="text/javascript" src="js/jAlert-v3.min.js"></script>  
