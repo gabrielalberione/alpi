@@ -4,6 +4,7 @@ var overviewmapCtrol;
 var urlTile;
 var urlWMS;
 var mapFile;
+var urlGeoJson = 'http://190.12.101.74/ais/alpi/ws/entidades/listar/1';
 
 var posActual = [-6506141.183454158, -4110246.2464916063];
 var posInicial = [-6506141.183454158, -4110246.2464916063];
@@ -52,38 +53,7 @@ function inicializar(){
 		source: new ol.source.OSM()
 	});
 	
-	bingMaps = new ol.layer.Tile({
-		id: 'base_'+2,
-		name: 'bingMaps',
-		type: 'base',
-		title: 'Bing Maps',
-		visible: false,
-		source: new ol.source.BingMaps({
-			key: 'AiWOEQkUaequRY_hR9K9vBorMmutTibMfX6YMe4QPZj78A_7yaA-IiOPjngEO-Zb',
-			imagerySet: 'Road'})
-	});
-	
-	bingMapsSatelital = new ol.layer.Tile({
-		id: 'base_'+3,
-		name: 'bingMapsSatelital',
-		type: 'base',
-		title: 'Bing Satelital',
-		visible: false,
-		source: new ol.source.BingMaps({
-			key: 'AiWOEQkUaequRY_hR9K9vBorMmutTibMfX6YMe4QPZj78A_7yaA-IiOPjngEO-Zb',
-			imagerySet:'AerialWithLabels'})
-	});
-	
-	mapQuest = new ol.layer.Tile({
-		id: 'base_'+4,
-		name: 'watercolor',
-		type: 'base',
-		title: 'Map Quest',
-		visible: false,
-		source: new ol.source.MapQuest({layer: 'osm'})
-	});
-	
-	var layersBases = [osm, bingMaps, bingMapsSatelital, mapQuest];
+	var layersBases = [osm];
 	cantCapasBases = layersBases.length;
 	/* END crea los mapas bases */
 	
@@ -99,9 +69,35 @@ function inicializar(){
 		view: view
 	});
 	
-	map.on('click', function(evt) {
-		//displayFeatureInfo(evt.pixel);
+	map.on('singleclick', function(evt) {
+		demoPunto();
 	});
+	
+	var vectorLayer = new ol.layer.Vector({
+		id: 1,
+		source: new ol.source.GeoJSON({
+			projection: 'EPSG:3857',
+			url: urlGeoJson
+		}),
+		style: function(feature, resolution) {
+			//console.log(feature.get('icono'));
+			var iconStyle = null;
+			if (feature.get('icono') != null){
+				iconStyle = [new ol.style.Style({
+					image: new ol.style.Icon( ({
+						anchor: [16, 32],
+						anchorXUnits: 'pixels',
+						anchorYUnits: 'pixels',
+						opacity: 0.75,
+						src: './iconos/lugaresoficiales.png'
+					}))
+				})];
+			}
+			return iconStyle;
+		}
+	});
+	
+	map.addLayer(vectorLayer);	
 	
 	view.setCenter(posInicial);
 };
