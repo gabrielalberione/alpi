@@ -81,10 +81,10 @@
 					</button>
 				</div>
                 <div class="col-xs-12" style="margin-top: 30px;">
-                	<div class="menu_opciones"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
+                	<div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
                 </div>
                 <div class="col-xs-12" style="margin-top: 15px;">
-                	<div class="menu_opciones jframe"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
+                	<div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
                 </div>
 			</div>
 		</div>  		
@@ -138,11 +138,14 @@
 				   $("#info_marker").hide("slow");
 				   bandera_marker_detalle = false;
 				});
-				$('.jframe').alertOnClick({
+				$('.jframe_about').alertOnClick({
 				   'iframe': 'about.html',
 				   'size': 'xlg' 
 				});
-	
+				$('.jframe_sugerencia').alertOnClick({
+				   'iframe': 'sugerencia.html',
+				   'size': 'xlg' 
+				});
 			});
 			
 		}) (jQuery);
