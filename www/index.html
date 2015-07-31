@@ -45,15 +45,18 @@
                 <div id="top_titulo"><p>ALPI</p></div>
             </div>
 	        <div id="info_marker" style="display:none;z-index:100; width:100%; border-top: solid 2px #e5e5e5;">
-            	<div style="padding: 10px; height: 100px;">
-	                <div style="float:left;">
-                    	<a href="javascript:imageAlert('img/demo.png')"><img src="img/demo.png" style="height: 80px;border-radius: 10px;"></a>
+                <i id="marker_cruz" class="fa fa-times" style="float: right; margin-right: 10px; margin-top: 10px;"></i>
+            	<div id="swipe_zona_marker">
+                    <div style="padding: 10px; height: 100px;">
+                        <div style="float:left;">
+                            <a href="javascript:imageAlert('img/demo.png')"><img src="img/demo.png" style="height: 80px;border-radius: 10px;"></a>
+                        </div>
+                        <div style="float:left; margin-left: 10px;"> 
+                            <h4 style="margin-top: 0px;">Demo de un punto</h4>
+                            <span>Acá iria una descripción...</span>
+                        </div>
                     </div>
-                    <div style="float:left; margin-left: 10px;"> 
-                    	<h4 style="margin-top: 0px;">Demo de un punto</h4>
-                        <span>Acá iria una descripción...</span>
-                    </div>
-                </div>
+                 </div>
                 <div id="div_toggle_detalle" style="border-top: solid 2px #e5e5e5; width:100%; text-align: center;">
                 	<i id="marker_flecha" class="fa fa-arrow-down" style="margin: 10px;"></i>
                 </div>
@@ -68,9 +71,6 @@
         
         <div class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
 			<div class="row" style="padding: 10px;">
-				<div class="col-xs-12" style="margin-top: 20px; margin-bottom: 35px; padding-left: 55px; padding-right: 55px;">
-					<img src="img/logo_completo.png" class="img-responsive">
-				</div>
 				<div class="col-xs-10 search">
 					<input id="search" name="search" type="text" placeholder="Que estas buscando?">
 				</div>
@@ -80,6 +80,12 @@
 						<i class="fa fa-search" style="margin-left:-1px;"></i>
 					</button>
 				</div>
+                <div class="col-xs-12" style="margin-top: 30px;">
+                	<div class="menu_opciones"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
+                </div>
+                <div class="col-xs-12" style="margin-top: 15px;">
+                	<div class="menu_opciones jframe"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
+                </div>
 			</div>
 		</div>  		
     </nav>
@@ -102,16 +108,17 @@
 	<script type="text/javascript" src="cordova.js"></script>	        
     <script type="text/javascript" src="js/ol.js"></script>	
     <script type="text/javascript" src="js/index.js"></script>    
-    <script type="text/javascript" src="js/jquery.js"></script>		
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/mapa.js"></script>
-	<script type="text/javascript" src="js/jAlert-functions.min.js"></script>
-    <script type="text/javascript" src="js/jAlert-v3.min.js"></script>  
-    <script type="text/javascript" src="js/slidebars.min.js"></script>      
+    <script type="text/javascript" src="js/libs/jquery.js"></script>		
+    <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mapa/mapa.js"></script>
+	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
+    <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>  
+    <script type="text/javascript" src="js/libs/slidebars.min.js"></script>   
+    <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script> 
+    <script type="text/javascript" src="js/mapa/eventos_touch.js"></script>  
     <script type="text/javascript">
-		app.initialize();
-		
-		bandera_marker_detalle = false;
+		app.initialize();		
+ 	 	bandera_marker_detalle = false;
 		(function($) {
 			$(document).ready(function() {
 				$.slidebars();
@@ -127,15 +134,23 @@
 						bandera_marker_detalle = false;
 					}
 				});
+				$('#marker_cruz').click(function(e) {  					
+				   $("#info_marker").hide("slow");
+				   bandera_marker_detalle = false;
+				});
+				$('.jframe').alertOnClick({
+				   'iframe': 'about.html',
+				   'size': 'xlg' 
+				});
 	
 			});
+			
 		}) (jQuery);
 		
 		function demoPunto(){
 		  $("#info_marker").toggle();
 		   
 		}
-
     </script>	   
 </body>
 </html>

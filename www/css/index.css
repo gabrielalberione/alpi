@@ -178,7 +178,7 @@ h1 {
 /* Estilo Principal */
 
 .boton_verde_alpi{
-	background-color: rgba(109,194,183,0.70);
+	background-color: rgba(109,194,183,1);
 	border-color: rgba(109,194,183,1);
 }
 
@@ -249,4 +249,9 @@ h1 {
 .search input[type="text"]:focus,
 .search input[type="text"].focus {
   border-bottom: solid 2px #969696;
+}
+
+.menu_opciones{
+	color: rgba(109,194,183,1); 
+	font-size: 14px;
 }
