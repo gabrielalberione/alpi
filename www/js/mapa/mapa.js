@@ -1,10 +1,13 @@
+
+var urlHost = 'http://190.12.101.74/ais/alpi';
+
 var map;
 var view;
 var overviewmapCtrol;
 var urlTile;
 var urlWMS;
 var mapFile;
-var urlGeoJson = 'http://190.12.101.74/ais/alpi/ws/entidades/listar/4';
+var urlGeoJson = urlHost+'/ws/entidades/listar/4';
 
 var posActual = [-6506141.183454158, -4110246.2464916063];
 var posInicial = [-6506141.183454158, -4110246.2464916063];
@@ -74,11 +77,11 @@ function inicializar(){
 		map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
 			if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
 				$('#infoEntidadTitulo').html(feature.get('nombre'));
-				$('#infoEntidadCopete').html(feature.get('rubro')+'<br>'+feature.get('calle')+' '+feature.get('altura'));
+				$('#infoEntidadCopete').html(feature.get('rubro')+'<br><i class="fa fa-map-marker"></i> '+feature.get('calle')+' '+feature.get('altura'));
 				var htmlDetalle = "";
-				htmlDetalle += '<b>Tel.: </b>'+feature.get('telefono')+'<br>';
-				htmlDetalle += '<b>e-mail: </b>'+feature.get('email')+'<br>';
-				htmlDetalle += '<b>Web: </b>'+feature.get('web')+'<br>';
+				htmlDetalle += '<i class="fa fa-phone"></i> '+feature.get('telefono')+'<br>';
+				htmlDetalle += '<i class="fa fa-envelope"></i> '+feature.get('email')+'<br>';
+				htmlDetalle += '<i class="fa fa-globe"></i> '+feature.get('web')+'<br>';
 				htmlDetalle += feature.get('descripcion')+'<br>';
 				$('#divInfoEntidadDetalle').html(htmlDetalle);
 				
@@ -102,7 +105,7 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		icono: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png',
+		icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -118,7 +121,7 @@ function inicializar(){
 						anchorXUnits: 'pixels',
 						anchorYUnits: 'pixels',
 						opacity: 0.75,
-						src: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png'
+						src: urlHost+'/files/icons_layers/lugaresoficiales.png'
 					}))
 				})];
 			}
