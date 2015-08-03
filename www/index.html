@@ -68,15 +68,19 @@
         <div class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
 			<div class="row" style="padding: 10px;">
 				<div class="col-xs-10 search">
-					<input id="search" name="search" type="text" placeholder="Que estas buscando?">
+					<input id="inputBusqueda" name="inputBusqueda" type="text" placeholder="Que estas buscando?">
 				</div>
 				<div class="col-xs-2">
-					<button type="button" class="btn btn-primary boton_verde_alpi" onclick="centrarMiPosicion()" 
+					<button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
 					style="border-radius: 40px; height: 40px; width: 40px; float:right;">
 						<i class="fa fa-search" style="margin-left:-1px;"></i>
 					</button>
 				</div>
-                <div class="col-xs-12" style="margin-top: 30px;">
+			</div>
+			<div id="divAjaxResultadoBusqueda">
+			</div>
+			<div class="row" style="padding: 10px;">
+                <div class="col-xs-12" style="margin-top: 10px;">
                 	<div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
                 </div>
                 <div class="col-xs-12" style="margin-top: 15px;">
@@ -107,20 +111,21 @@
     <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script> 
     <script type="text/javascript" src="js/mapa/eventos_touch.js"></script>  
     <script type="text/javascript">
+		var mySlidebars;
 		app.initialize();		
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
 			$(document).ready(function() {
-				$.slidebars();
+				mySlidebars = new $.slidebars();
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
-					   $("#divInfoEntidadDetalle").show("slow");
-					   $("#marker_flecha").attr('class', 'fa fa-caret-up');
-					   bandera_divInfoEntidadDetalle = true;
-					   //mySlidebars.slidebars.open('right');
+						$("#divInfoEntidadDetalle").show("slow");
+						$("#marker_flecha").attr('class', 'fa fa-caret-up');
+						bandera_divInfoEntidadDetalle = true;
+						mySlidebars.slidebars.open('right');
 					}else{
-					   $("#divInfoEntidadDetalle").hide("slow");
-					   $("#marker_flecha").attr('class', 'fa fa-caret-down');				   
+						$("#divInfoEntidadDetalle").hide("slow");
+						$("#marker_flecha").attr('class', 'fa fa-caret-down');				   
 						bandera_divInfoEntidadDetalle = false;
 					}
 				});
@@ -139,6 +144,10 @@
 			});
 			
 		}) (jQuery);
+		
+		function realizarBusqueda(){
+			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+		}
     </script>	   
 </body>
 </html>

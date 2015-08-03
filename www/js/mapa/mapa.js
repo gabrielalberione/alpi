@@ -174,3 +174,17 @@ function puntoGPS(xparam, yparam){
 function centrarMiPosicion(){
     view.setCenter([posActual[0],posActual[1]]);
 }
+
+function ubicarEnMapa(x,y){
+	/* efecto, centrar en mapa */
+	var pan = ol.animation.pan({
+		duration: 1000,
+		source: /** @type {ol.Coordinate} */ (view.getCenter())
+	});
+	map.beforeRender(pan);
+	if (view.getZoom() < 16){
+		view.setZoom(16);
+	}
+	view.setCenter([x,y]);
+	/* END efecto */
+}
