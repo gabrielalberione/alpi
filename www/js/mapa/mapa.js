@@ -73,6 +73,7 @@ function inicializar(){
 	});
 	
 	map.on('singleclick', function(evt) {
+		$("#divInfoEntidad").hide();
 		/* verifica si hay entidades en layers tipo vector GeoJSON */
 		recorreEntidadesEnMapaPorPixel(evt.pixel);
 	});
