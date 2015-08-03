@@ -45,20 +45,20 @@
                 <div id="top_titulo"><p>ALPI</p></div>
             </div>
 	        <div id="divInfoEntidad" style="display:none;z-index:100; width:100%; border-top: solid 2px #e5e5e5;">
-                <i id="marker_cruz" class="fa fa-times" style="float: right; margin-right: 10px; margin-top: 10px;"></i>
-            	<div id="swipe_zona_marker">
-                    <div style="padding: 10px; height: 100px;">
-                        <div style="float:left;">
+            	<div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
+                    <div class="row" style="padding: 10px;">
+                        <div class="col-xs-4">
                             <a id="infoEntidadImgA" href="javascript:imageAlert('')"><img id="infoEntidadImg" src="" style="height: 80px;border-radius: 10px;"></a>
                         </div>
-                        <div style="float:left; margin-left: 10px; margin-top:5px;"> 
+                        <div class="col-xs-8"> 
+							<i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
                             <h4 style="margin-top: 0px;" id="infoEntidadTitulo"></h4>
                             <span id="infoEntidadCopete"></span>
                         </div>
                     </div>
-                 </div>
-                <div id="div_toggle_detalle" style="border-top: solid 2px #e5e5e5; width:100%; text-align: center;">
-                	<i id="marker_flecha" class="fa fa-arrow-down" style="margin: 10px;"></i>
+                </div>
+                <div id="div_toggle_detalle" style="width:100%; text-align: center;">
+                	<i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
                 </div>
                 <div id="divInfoEntidadDetalle" style="display: none; padding-bottom: 5px">                               
                 </div>
@@ -115,12 +115,12 @@
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
 					   $("#divInfoEntidadDetalle").show("slow");
-					   $("#marker_flecha").attr('class', 'fa fa-arrow-up');
+					   $("#marker_flecha").attr('class', 'fa fa-caret-up');
 					   bandera_divInfoEntidadDetalle = true;
-					   mySlidebars.slidebars.open('right');
+					   //mySlidebars.slidebars.open('right');
 					}else{
 					   $("#divInfoEntidadDetalle").hide("slow");
-					   $("#marker_flecha").attr('class', 'fa fa-arrow-down');				   
+					   $("#marker_flecha").attr('class', 'fa fa-caret-down');				   
 						bandera_divInfoEntidadDetalle = false;
 					}
 				});
