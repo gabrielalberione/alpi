@@ -150,6 +150,13 @@ function puntoGPS(xparam, yparam){
 	posActual[1] = y;
 	
 	if (featurePosActual == null){
+		/**
+		featurePosActual = new ol.Overlay({
+			position: [x,y],
+			element: $('<div class="marker"><div class="dot"></div><div class="pulse"></div></div>')
+		});
+		map.addOverlay(featurePosActual);
+		/**/
 		featurePosActual = new ol.Feature({
 			geometry: new ol.geom.Point([x,y]),
 			nombre: 'Mi posición',
@@ -163,16 +170,20 @@ function puntoGPS(xparam, yparam){
 		
 		var iconStyle = new ol.style.Style({
 			image: new ol.style.Icon(({
+				anchor: [15, 15],
+				anchorXUnits: 'pixels',
+				anchorYUnits: 'pixels',
 				opacity: 0.75,
-				src: 'iconos/mi_ballon.png'
+				src: 'iconos/miposicion.png'
 			}))
 		});
 		
 		featurePosActual.setStyle(iconStyle);
+		/**/
 	} else {
+		//featurePosActual.setPosition([x,y]);
 		featurePosActual.setGeometry(new ol.geom.Point([x,y]));
 	}
-
 }
 
 function centrarMiPosicion(){
