@@ -99,7 +99,7 @@ function inicializar(){
 					anchorXUnits: 'pixels',
 					anchorYUnits: 'pixels',
 					opacity: 0.75,
-					src: urlHost+'/files/icons_layers/lugaresoficiales_'+feature.get('rubro_id')+'.png'
+					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
 				}))
 			})];
 			return iconStyle;
