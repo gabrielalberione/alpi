@@ -21,8 +21,14 @@
 }
 
 @font-face {
-    font-family: 'Relaway'; /*a name to be used later*/
-    src: url('../fonts/Raleway-Regular.ttf'); /*URL to font*/
+    font-family: 'TradeGothic'; /*a name to be used later*/
+    src: url('../fonts/TradeGothicLTStd.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'TradeGothic'; /*a name to be used later*/
+	font-weight: bold;
+    src: url('../fonts/TradeGothicLTStd-Bold.otf'); /*URL to font*/
 }
 
 body {
@@ -41,7 +47,7 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'Relaway', Arial, sans-serif;
+    font-family:'TradeGothic', Arial, sans-serif;
     font-size:12px;
     height:100%;
     margin:0px;

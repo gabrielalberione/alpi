@@ -23,5 +23,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+	<preference name="permissions" value="none"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />	
 </widget>
