@@ -93,17 +93,15 @@ function inicializar(){
 		}),
 		style: function(feature, resolution) {
 			var iconStyle = null;
-			if (true){ //(feature.get('icono') != null){
-				iconStyle = [new ol.style.Style({
-					image: new ol.style.Icon( ({
-						anchor: [16, 32],
-						anchorXUnits: 'pixels',
-						anchorYUnits: 'pixels',
-						opacity: 0.75,
-						src: urlHost+'/files/icons_layers/lugaresoficiales.png'
-					}))
-				})];
-			}
+			iconStyle = [new ol.style.Style({
+				image: new ol.style.Icon( ({
+					anchor: [16, 32],
+					anchorXUnits: 'pixels',
+					anchorYUnits: 'pixels',
+					opacity: 0.75,
+					src: urlHost+'/files/icons_layers/lugaresoficiales_'+feature.get('rubro_id')+'.png'
+				}))
+			})];
 			return iconStyle;
 		}
 	});
@@ -117,7 +115,10 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 	map.forEachFeatureAtPixel(pixel, function(feature, layer) {
 		if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
 			$('#infoEntidadTitulo').html(feature.get('nombre'));
-			$('#infoEntidadCopete').html(feature.get('rubro')+'<br><i class="fa fa-map-marker"></i> '+feature.get('calle')+' '+feature.get('altura'));
+			var copete = feature.get('rubro');
+			copete += '<br><i class="fa fa-map-marker"></i> '+feature.get('calle')+' '+feature.get('altura');
+			copete += '<br><i class="fa fa-flag"></i>  a ' + obtenerDistancia(feature.getGeometry().getCoordinates(), posActual);
+			$('#infoEntidadCopete').html(copete);
 			var htmlDetalle = "";
 			htmlDetalle += '<i class="fa fa-phone"></i> '+feature.get('telefono')+'<br>';
 			htmlDetalle += '<i class="fa fa-envelope"></i> '+feature.get('email')+'<br>';
@@ -137,6 +138,21 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 			$("#divInfoEntidad").show(500);
 		}
 	});
+}
+
+function obtenerDistancia(coordDesde, coordHasta){
+	/* distancia */
+	var wgs84Sphere = new ol.Sphere(6378137);
+	var distance = wgs84Sphere.haversineDistance(ol.proj.transform(coordDesde, 'EPSG:3857', 'EPSG:4326'),ol.proj.transform(coordHasta, 'EPSG:3857', 'EPSG:4326')); 
+	distance = Math.round(distance * 100) / 100;
+	if (distance > 1000) {
+		distance = (Math.round(distance / 1000 * 100) / 100) +
+		' ' + 'km';
+	} else {
+		distance = (Math.round(distance * 100) / 100) +
+		' ' + 'm';
+	}
+	return distance;
 }
 
 /* PARAMETROS deben estar en 4326 */
@@ -208,4 +224,27 @@ function ubicarEnMapa(x,y){
 	/* END efecto */
 	var s = setInterval(function(){ recorreEntidadesEnMapaPorPixel(map.getPixelFromCoordinate([x,y])); clearInterval(s); }, 1200);
 	
+}
+
+function refrescarMapa(){
+	var layers = map.getLayers().getArray();
+	for(i=0; i < layers.length; i++){
+		var ly = layers[i];
+		if (ly.get('datasource') == 0){ // WMS interno
+			/* puede que updateParams no exista, es por ello el try */
+			try {
+				ly.getSource().updateParams({time_: (new Date()).getTime()});
+			} catch(err) { 
+				//console.log(ly.get('nombre'));
+				//console.log(err);
+			}
+			
+		} else if (ly.get('datasource') == 1){ // Geojson
+			ly.getSource().clear();
+			ly.setSource(new ol.source.GeoJSON({
+				projection: 'EPSG:3857',
+				url: urlGeoJson
+			}));
+		}
+	}
 }
