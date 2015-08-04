@@ -116,14 +116,14 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 		if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
 			$('#infoEntidadTitulo').html(feature.get('nombre'));
 			var copete = feature.get('rubro');
-			copete += '<br><i class="fa fa-map-marker"></i> '+feature.get('calle')+' '+feature.get('altura');
-			copete += '<br><i class="fa fa-flag"></i>  a ' + obtenerDistancia(feature.getGeometry().getCoordinates(), posActual);
+			copete += '<br><i class="fa fa-map-marker marker_info_iconos" style="padding-left: 3px; padding-right: 2px;"></i> '+feature.get('calle')+' '+feature.get('altura');
+			copete += '<br><i class="fa fa-flag marker_info_iconos"></i>  a ' + obtenerDistancia(feature.getGeometry().getCoordinates(), posActual);
 			$('#infoEntidadCopete').html(copete);
 			var htmlDetalle = "";
-			htmlDetalle += '<i class="fa fa-phone"></i> '+feature.get('telefono')+'<br>';
-			htmlDetalle += '<i class="fa fa-envelope"></i> '+feature.get('email')+'<br>';
-			htmlDetalle += '<i class="fa fa-globe"></i> '+feature.get('web')+'<br>';
-			htmlDetalle += feature.get('descripcion')+'<br>';
+			htmlDetalle += '<i class="fa fa-phone marker_info_iconos" style="padding-left: 2px;"></i> '+feature.get('telefono')+'<br>';
+			htmlDetalle += '<i class="fa fa-envelope marker_info_iconos"></i> '+feature.get('email')+'<br>';
+			htmlDetalle += '<i class="fa fa-globe marker_info_iconos" style="padding-left: 2px; margin-bottom: 10px;"></i> '+feature.get('web')+'<br>';
+			htmlDetalle += '<p>'+feature.get('descripcion')+'</p>';
 			$('#divInfoEntidadDetalle').html(htmlDetalle);
 			
 			var ms = feature.get('Multimedias');
