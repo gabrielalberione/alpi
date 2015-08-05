@@ -2,7 +2,7 @@
 <html>
 <head >
     <meta charset="utf-8"/>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=medium-dpi, width=device-width"/>
     
     <title>ALPI accesible</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -73,7 +73,7 @@
         <div id="menu_lateral" class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
 			<div class="row" style="padding: 10px;">
 				<div class="col-xs-10 search">
-					<input id="inputBusqueda" name="inputBusqueda" type="search" placeholder="Que estas buscando?">
+					<input id="inputBusqueda" name="inputBusqueda" type="text" placeholder="Que estas buscando?">
 				</div>
 				<div class="col-xs-2">
 					<button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
@@ -120,6 +120,12 @@
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
 			$(document).ready(function() {
+				$("#inputBusqueda").on( "keydown", function(event) {
+			      if(event.which == 13) 
+					realizarBusqueda();
+				})
+				
+				
 				mySlidebars = new $.slidebars();
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
@@ -194,6 +200,7 @@
 				 //Default is 75px, set to 0 for demo so any distance triggers swipe
 				  threshold:0
 				});
+
 			
 		}) (jQuery);
 		
