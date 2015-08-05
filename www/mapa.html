@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head >
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    
+    <title>ALPI accesible</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="js/ol3/ol.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/jAlert-v3.css" rel="stylesheet">
+    <link href="css/slidebars.min.css" rel="stylesheet">
+</head>
+<body>
+     <div class="spinner" style="display: none;" id="splashLoading">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+          <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
+        </div>
+	<style>	
+    .ol-zoom{
+        display: block;
+		top: auto;
+		bottom: 10px;
+		left: 10px;
+    }
+	.ol-control button{
+		background-color: #69C3A0;
+		font-size: 20px;
+	}
+    .ol-attribution{
+        display: none;
+    }
+    .ol-rotate{
+        top: auto;
+        bottom: 170px;
+        right: 18px;
+        display: none;
+    }
+    
+    img { display:inline;}
+    </style>
+	<nav class="navbar navbar-default navbar-fixed-top fondo_top">
+     	<div class="container">
+        	<div style="height: 50px;">
+                <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
+                <div class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
+                <div id="top_titulo"><span>ALPI accesible</span></div>
+            </div>
+	        <div id="divInfoEntidad" style="display:none;z-index:100; width:100%; border-top: solid 2px #e5e5e5;">
+            	<div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
+                    <div class="row" style="padding: 10px;">
+                        <div class="col-xs-4" style="text-align: center;">
+                            <a id="infoEntidadImgA" href="#"><img id="infoEntidadImg" src="#" style="height: 80px;border-radius: 10px;"></a>
+                        </div>
+                        <div class="col-xs-8"> 
+							<i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
+                            <h5 style="margin-top: 0px;" id="infoEntidadTitulo"></h5>
+                            <span id="infoEntidadCopete"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_toggle_detalle" style="width:100%; text-align: center;">
+                	<i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
+                </div>
+                <div id="divInfoEntidadDetalle" style="display: none; padding-bottom: 5px">                               
+                </div>
+            </div>
+    	</div>
+        
+        <div id="menu_lateral" class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
+			<div class="row" style="padding: 10px;">
+				<div class="col-xs-10 search">
+					<input id="inputBusqueda" name="inputBusqueda" type="search" placeholder="Que estas buscando?">
+				</div>
+				<div class="col-xs-2">
+					<button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
+					style="border-radius: 40px; height: 40px; width: 40px; float:right;">
+						<i class="fa fa-search" style="margin-left:-1px;"></i>
+					</button>
+				</div>
+			</div>
+			<div id="divAjaxResultadoBusqueda">            	
+			</div>
+			<div class="row" style="padding: 10px;">
+                <div class="col-xs-12" style="margin-top: 10px;">
+                	<div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
+                </div>
+                <div class="col-xs-12" style="margin-top: 15px;">
+                	<div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
+                </div>
+			</div>
+		</div>  		
+    </nav>
+	<div data-snap-ignore="true">
+          
+        <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
+            <button type="button" class="btn btn-primary boton_blanco" onclick="centrarMiPosicion()" 
+            style="border-radius: 50px; height: 50px; width: 50px;">
+                <img src="img/iconos/posicion.png" style="height: 20px; margin-bottom: 2px;">
+            </button>
+        </div>     
+        <div id="map" style="width:100%;height:100%;z-index:2000;"></div>
+    </div>
+	<script type="text/javascript" src="cordova.js"></script>	        
+    <script type="text/javascript" src="js/ol3/ol.js"></script>	
+    <script type="text/javascript" src="js/index.js"></script>    
+    <script type="text/javascript" src="js/libs/jquery.js"></script>		
+    <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mapa/mapa.js"></script>
+	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
+    <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>  
+    <script type="text/javascript" src="js/libs/slidebars.min.js"></script>   
+    <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script> 
+    <script type="text/javascript">
+		var mySlidebars;
+		app.initialize();		
+ 	 	bandera_divInfoEntidadDetalle = false;
+		(function($) {
+			$(document).ready(function() {
+				mySlidebars = new $.slidebars();
+				$('#div_toggle_detalle').click(function(e) {  
+					if(bandera_divInfoEntidadDetalle == false){
+						$("#divInfoEntidadDetalle").show("slow");
+						$("#marker_flecha").attr('class', 'fa fa-caret-up');
+						bandera_divInfoEntidadDetalle = true;
+						mySlidebars.slidebars.open('right');
+					}else{
+						$("#divInfoEntidadDetalle").hide("slow");
+						$("#marker_flecha").attr('class', 'fa fa-caret-down');				   
+						bandera_divInfoEntidadDetalle = false;
+					}
+				});
+				$('#marker_cruz').click(function(e) {  					
+				   $("#divInfoEntidad").hide("slow");
+				   bandera_divInfoEntidadDetalle = false;
+				});
+				$('.jframe_about').alertOnClick({
+				   'iframe': 'about.html',
+				   'size': 'xlg' 
+				});
+				$('.jframe_sugerencia').alertOnClick({
+				   'iframe': 'sugerencia.html?urlHost='+urlHost,
+				   'size': 'xlg' 
+				});
+			});
+			
+				$("#swipe_zona_marker").swipe( {
+				 //Generic swipe handler for all directions
+				 swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					if(direction == "down"){
+					   $("#marker_detalle").show("slow");
+					   $("#marker_flecha").attr('class', 'fa fa-sort-asc');
+					   $("#marker_flecha").attr('class', 'fa fa-arrow-up');
+					   bandera_marker_detalle = true;
+				   }
+					if(direction == "up"){
+					   if(bandera_marker_detalle){
+						   $("#marker_detalle").hide("slow");
+						   $("#marker_flecha").attr('class', 'fa fa-sort-desc');			   
+						   $("#marker_flecha").attr('class', 'fa fa-arrow-down');			   
+					   }else{
+						   $("#info_marker").toggle("slow");
+					   }
+					   bandera_marker_detalle = false;
+				   }		   
+				 },
+				 //Default is 75px, set to 0 for demo so any distance triggers swipe
+				  threshold:0
+				});
+				
+				$("#marker_detalle").swipe( {
+				 //Generic swipe handler for all directions
+				 swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					if(direction == "down"){
+					   $("#marker_detalle").show("slow");
+					   $("#marker_flecha").attr('class', 'fa fa-sort-asc');
+					   $("#marker_flecha").attr('class', 'fa fa-arrow-up');
+					   bandera_marker_detalle = true;
+				   }
+					if(direction == "up"){
+					   if(bandera_marker_detalle){
+						   $("#marker_detalle").hide("slow");
+						   $("#marker_flecha").attr('class', 'fa fa-sort-desc');			   
+						   $("#marker_flecha").attr('class', 'fa fa-arrow-down');			   
+					   }else{
+						   $("#info_marker").toggle("slow");
+					   }
+					   bandera_marker_detalle = false;
+				   }		   
+				 },
+				 //Default is 75px, set to 0 for demo so any distance triggers swipe
+				  threshold:0
+				});
+			
+		}) (jQuery);
+		
+		function realizarBusqueda(){
+			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+		}
+    </script>	   
+</body>
+</html>

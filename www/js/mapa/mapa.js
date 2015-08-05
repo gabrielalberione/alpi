@@ -98,7 +98,7 @@ function inicializar(){
 					anchor: [16, 32],
 					anchorXUnits: 'pixels',
 					anchorYUnits: 'pixels',
-					opacity: 0.75,
+					opacity: 0.85,
 					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
 				}))
 			})];

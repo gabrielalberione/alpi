@@ -3,17 +3,12 @@
 	.rb_contenedor_icono{
 		float: left; 
 		position: absolute; 
-		width: 40px; 
-		height: 40px; 
+		margin-top: 12px;
 		vertical-align: middle;
 	}
 	
-	.rb_contenedor_icono i{
-		color: #9E9E9E; 
-		font-size: 20px;
-		margin-top: 16px;
-		margin-left: 10px;
-		cursor: pointer;
+	.rb_contenedor_icono img{
+		max-height: 32px;
 	}
 	
 	.rb_contenedor_info{
@@ -34,6 +29,7 @@
     <script type="text/javascript">
     $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
     if ($('#inputBusqueda').val().length > 2){
+		var urlHost = 'http://190.12.101.74/ais/alpi';
         var condicion = " nombre iLIKE '%"+$('#inputBusqueda').val()+"%' ";
         $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
             var items = [];
@@ -41,7 +37,7 @@
                 var feature = data.features[key];
                 var coord = ol.proj.transform(feature.geometry.coordinates,'EPSG:4326','EPSG:3857');
                 var html = "<div onclick='mySlidebars.slidebars.close(); ubicarEnMapa("+coord[0]+","+coord[1]+")'>";
-                html += '<div class="rb_contenedor_icono"><i class="fa fa-map-marker"></i></div>';                                                    
+                html += '<div class="rb_contenedor_icono"><img src="'+urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.properties.rubro_id+'.png'+'"></im></div>';                                                    
                 html += '<div class="rb_contenedor_info">';
 				html += '<span><b>'+feature.properties.nombre+'</b></span><br>';
 				html += '<span>'+feature.properties.rubro+'</span>';
@@ -51,7 +47,7 @@
             });
             
             if (items.length > 0){
-                var html = '<div><h6 style="margin-left: 12px; color: #6DC2B7; margin-top: 10px;">Resultados: </h6>';
+                var html = '<div><span style="font-size: 12px; margin-left: 12px; color: #6DC2B7; margin-top: 10px;">Resultados: </span>';
                 html += items.join( "" );
                 html += '</div>';
                 $('#divResultadoBusqueda').html(html);
