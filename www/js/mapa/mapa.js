@@ -86,7 +86,7 @@ function inicializar(){
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
 		icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
-		//icono: urlHost+'/files/icons_layers/peek.png',
+		//icono: urlHost+'/files/icons_layers/peek.svg',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -101,13 +101,12 @@ function inicializar(){
             	scale: 1,
             	anchorXUnits: 'fraction',
             	anchorYUnits: 'fraction',	*/
-					anchor: [32, 64],
+					anchor: [16, 32],
 					anchorXUnits: 'pixels',
 					anchorYUnits: 'pixels',
-					scale: 0.5,
 					opacity: 0.90,				
 					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
-					//src: urlHost+'/files/icons_layers/peek.png'
+					//src: urlHost+'/files/icons_layers/peek.svg'
 				}))
 			})];
 			return iconStyle;
