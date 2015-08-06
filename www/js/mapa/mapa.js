@@ -71,10 +71,6 @@ function inicializar(){
 		layers: layersBases,
 		view: view
 	});
-	
-	map.on('click', function(evt) {
-		mySlidebars.slidebars.close();
-	});
 		
 	map.on('singleclick', function(evt) {
 		$("#divInfoEntidad").hide();
