@@ -101,9 +101,10 @@ function inicializar(){
             	scale: 1,
             	anchorXUnits: 'fraction',
             	anchorYUnits: 'fraction',	*/
-					anchor: [16, 32],
+					anchor: [32, 64],
 					anchorXUnits: 'pixels',
 					anchorYUnits: 'pixels',
+					scale: 0.5,
 					opacity: 0.90,				
 					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
 					//src: urlHost+'/files/icons_layers/peek.svg'
