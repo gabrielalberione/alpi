@@ -53,15 +53,23 @@
                 $('#divResultadoBusqueda').html(html);
             } else{
                 var html = '<div class="alert alert-warning" role="alert">';
-                html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size: 28px">&times;</span></button>';
+                //html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size: 28px">&times;</span></button>';
                 html += 'No se han encontrado resultados.';
                 html += '</div>';
                 $('#divResultadoBusqueda').html(html);
+				var cerrarMensaje = setInterval(function() {
+					$('#divResultadoBusqueda').html("");
+					clearInterval(cerrarMensaje);
+				}, 2000);
             }
     
         });
     } else{
         $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Ingrese 3 o más caracteres.</div>');
+		var cerrarMensaje = setInterval(function() {
+			$('#divResultadoBusqueda').html("");
+			clearInterval(cerrarMensaje);
+		}, 2000);
     }
     
     </script>

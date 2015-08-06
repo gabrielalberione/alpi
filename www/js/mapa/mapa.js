@@ -74,6 +74,7 @@ function inicializar(){
 	
 	map.on('singleclick', function(evt) {
 		$("#divInfoEntidad").hide();
+		mySlidebars.slidebars.close();
 		/* verifica si hay entidades en layers tipo vector GeoJSON */
 		recorreEntidadesEnMapaPorPixel(evt.pixel);
 	});
@@ -84,7 +85,8 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
+		//icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
+		icono: urlHost+'/files/icons_layers/awesome_tiger.svg',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -95,11 +97,12 @@ function inicializar(){
 			var iconStyle = null;
 			iconStyle = [new ol.style.Style({
 				image: new ol.style.Icon( ({
-					anchor: [16, 32],
-					anchorXUnits: 'pixels',
-					anchorYUnits: 'pixels',
-					opacity: 0.85,
-					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
+				anchor: [12, 0.5],
+				scale: 0.1,
+				anchorXUnits: 'pixel',
+				anchorYUnits: 'fraction',
+					//src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
+					src: urlHost+'/files/icons_layers/awesome_tiger.svg'
 				}))
 			})];
 			return iconStyle;
