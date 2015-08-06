@@ -62,7 +62,7 @@ function inicializar(){
 	
 	view = new ol.View({
 		center: posInicial,
-		zoom: 11
+		zoom: 12
 	});
 	/**/
 	
