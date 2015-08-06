@@ -85,8 +85,8 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		//icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
-		icono: urlHost+'/files/icons_layers/awesome_tiger.svg',
+		icono: urlHost+'/files/icons_layers/lugaresoficiales.png',
+		//icono: urlHost+'/files/icons_layers/peek.svg',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -97,12 +97,16 @@ function inicializar(){
 			var iconStyle = null;
 			iconStyle = [new ol.style.Style({
 				image: new ol.style.Icon( ({
-				anchor: [12, 0.5],
-				scale: 0.1,
-				anchorXUnits: 'pixel',
-				anchorYUnits: 'fraction',
-					//src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
-					src: urlHost+'/files/icons_layers/awesome_tiger.svg'
+				/*anchor: [0.5, 1],
+            	scale: 1,
+            	anchorXUnits: 'fraction',
+            	anchorYUnits: 'fraction',	*/
+					anchor: [16, 32],
+					anchorXUnits: 'pixels',
+					anchorYUnits: 'pixels',
+					opacity: 0.90,				
+					src: urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.get('rubro_id')+'.png'
+					//src: urlHost+'/files/icons_layers/peek.svg'
 				}))
 			})];
 			return iconStyle;
