@@ -10,7 +10,7 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="css/jAlert-v3.css" rel="stylesheet">
-    <link href="css/slidebars.min.css" rel="stylesheet">
+    <link href="css/snap.css" rel="stylesheet">
 </head>
 <body>
      <div class="spinner" style="display: none;" id="splashLoading">
@@ -41,37 +41,9 @@
     
     img { display:inline;}
     </style>
-	<nav class="navbar navbar-default navbar-fixed-top fondo_top">
-     	<div class="container">
-        	<div style="height: 50px;">
-                <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
-                <div class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
-                <div id="top_titulo"><span>ALPI Accesible</span></div>
-            </div>	
-             <div id="divInfoEntidad" style="display:none; width:100%; border-top: solid 2px #e5e5e5;">
-            	<div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
-                    <div class="row" style="padding: 10px;">
-                        <div class="col-xs-4" style="text-align: center;">
-                            <a id="infoEntidadImgA" href="#"><img id="infoEntidadImg" src="#" style="height: 80px;border-radius: 10px;"></a>
-                        </div>
-                        <div class="col-xs-8"> 
-							<i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
-                            <h5 style="margin-top: 0px;" id="infoEntidadTitulo"></h5>
-                            <span id="infoEntidadCopete"></span>
-                        </div>
-                    </div>
-                </div>
-                <div id="div_toggle_detalle" style="width:100%; text-align: center;">
-                	<i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
-                </div>
-                <div id="divInfoEntidadDetalle" style="display: none; padding-bottom: 5px">                               
-                </div>
-            </div>        
-    	</div>
-        
-
-        <div id="menu_lateral" class="menu sb-slidebar sb-left sb-style-push sb-slide">
-            <div class="col-xs-12">
+	<div class="snap-drawers">
+         <div class="snap-drawer snap-drawer-left" style="margin-top: 50px; padding-top: 10px;">
+             <div class="col-xs-12">
                 <p class="menu_opciones" style="font-size: 16px; text-align: center;"><b>¿Que estas buscando?</b></p>
             </div>
             <div class="col-xs-12">
@@ -88,7 +60,7 @@
                 </button>
             </div>
             <div class="col-xs-12 row" style="margin-top: 20px; margin-left:5px">
-				<div id="divAjaxResultadoBusqueda"></div>
+                <div id="divAjaxResultadoBusqueda"></div>
             </div>
             <div class="col-xs-12 row" style="margin-top: 20px; margin-left:5px">
                 <div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
@@ -96,21 +68,47 @@
             <div class="col-xs-12 row" style="margin-top: 15px; margin-left:5px">
                 <div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
             </div>
-		</div>  		
-    </nav>
-	<div data-snap-ignore="true">
-          
+        </div> 
+    </div>    		
+    <div id="content">    
+        <nav class="navbar navbar-default navbar-fixed-top fondo_top">        
+            <div class="container">
+                <div style="height: 50px;">
+                    <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
+                    <div id="btn_menu" class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
+                    <div id="top_titulo"><span>ALPI Accesible</span></div>
+                </div>	
+                 <div id="divInfoEntidad" style="display:none; width:100%; border-top: solid 2px #e5e5e5;">
+                    <div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
+                        <div class="row" style="padding: 10px;">
+                            <div class="col-xs-4" style="text-align: center;">
+                                <a id="infoEntidadImgA" href="#"><img id="infoEntidadImg" src="#" style="height: 80px;border-radius: 10px;"></a>
+                            </div>
+                            <div class="col-xs-8"> 
+                                <i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
+                                <h5 style="margin-top: 0px;" id="infoEntidadTitulo"></h5>
+                                <span id="infoEntidadCopete"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_toggle_detalle" style="width:100%; text-align: center;">
+                        <i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
+                    </div>
+                    <div id="divInfoEntidadDetalle" style="display: none; padding-bottom: 5px">                               
+                    </div>
+                </div>        
+            </div>         
+        </nav> 
         <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
             <button type="button" class="btn btn-primary boton_blanco" onclick="centrarMiPosicion()" 
             style="border-radius: 50px; height: 50px; width: 50px;">
                 <img src="img/iconos/posicion.png" style="height: 23px; padding-top:2px">
             </button>
-        </div>   
+        </div>         
        <!-- <div id="abrir_menu_slide_touch" style="z-index: 2000; width:20px;height:100%; float: left; 
-        	position: absolute; top: 0px;"></div>  -->
+            position: absolute; top: 0px;"></div>  -->
         <div id="map" style="width:100%;height:100%;z-index:2000;"></div>
-        <div class="ssm-overlay"></div>
-    </div>
+     </div>
 	<script type="text/javascript" src="cordova.js"></script>	        
     <script type="text/javascript" src="js/ol3/ol.js"></script>	
     <script type="text/javascript" src="js/index.js"></script>    
@@ -119,8 +117,8 @@
     <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script> 
     <script type="text/javascript" src="js/mapa/mapa.js"></script>
 	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
-    <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>  
-    <script type="text/javascript" src="js/libs/slidebars.min.js"></script>   
+    <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>    
+    <script type="text/javascript" src="js/libs/snap.js"></script>   
 
     <script type="text/javascript">
 		var mySlidebars;
@@ -129,12 +127,18 @@
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
 			$(document).ready(function() {
-				mySlidebars = new $.slidebars();
+				//mySlidebars = new $.slidebars();
 				/*var busqueda = window.localStorage.getItem("busqueda");
 				if(busqueda != ""){
 					var resultado = window.localStorage.getItem("resultado");
 				}*/
+				var snapper = new Snap({
+					element: document.getElementById('content')             
+				});
 				
+				$('#btn_menu').click(function(e) {
+					 snapper.open('left');  
+				});
 				
 				$("#inputBusqueda").on( "keydown", function(event) {
 			      if(event.which == 13) 
@@ -225,7 +229,8 @@
 			});
 			//window.localStorage.setItem("busqueda", $("#inputBusqueda").val());
 		}
-		
+
+ 			
     </script>	   
 </body>
 </html>
