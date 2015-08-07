@@ -2,7 +2,7 @@
 <html>
 <head >
     <meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
     <title>ALPI Accesible</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
@@ -10,7 +10,6 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="css/jAlert-v3.css" rel="stylesheet">
-    <link href="css/slidebars.min.css" rel="stylesheet">
 </head>
 <body>
      <div class="spinner" style="display: none;" id="splashLoading">
@@ -23,7 +22,8 @@
 		height: 100%;
 		width: 280px;
 		background-color: #FFF;
-		padding-top: 60px;
+		margin-top: 50px;
+		padding: 10px;
 		left: 0;
 		top: 0;
 		z-index:2;
@@ -67,8 +67,7 @@
       <div id="top" style="position: fixed; top: 0;left:0; width:100%; z-index:2000; background-color:#FFFDFD;">
             <div style="height: 50px;">
                 <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
-                <div class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
-                <a class="ssm-open-nav" href="#" title="Open / close">Open / close</a>
+                <div class="ssm-open-nav top_btn_menu"><i class="fa fa-bars"></i></div>
                 <div id="top_titulo"><span>ALPI Accesible</span></div>
             </div>	
              <div id="divInfoEntidad" style="display:none; width:100%; border-top: solid 2px #e5e5e5;">
@@ -139,7 +138,6 @@
     <script type="text/javascript" src="js/mapa/mapa.js"></script>
 	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
     <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>  
-    <script type="text/javascript" src="js/libs/slidebars.min.js"></script>   
     <script type="text/javascript" src="js/libs/jquery.slideandswipe.min.js"></script>
 
     <script type="text/javascript">
@@ -235,6 +233,10 @@
 		
 		function realizarBusqueda(){
 			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+		}
+		
+		function cerrar_menu(){
+			$('nav').slideToggle(1000);
 		}
 		
     </script>	   
