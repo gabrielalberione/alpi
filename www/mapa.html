@@ -129,6 +129,13 @@
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
 			$(document).ready(function() {
+				mySlidebars = new $.slidebars();
+				/*var busqueda = window.localStorage.getItem("busqueda");
+				if(busqueda != ""){
+					var resultado = window.localStorage.getItem("resultado");
+				}*/
+				
+				
 				$("#inputBusqueda").on( "keydown", function(event) {
 			      if(event.which == 13) 
 					realizarBusqueda();
@@ -151,7 +158,6 @@
 				});
 				/**/
 				
-				mySlidebars = new $.slidebars();
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
 						$("#divInfoEntidadDetalle").show("slow");
@@ -214,7 +220,8 @@
 		
 		function realizarBusqueda(){
 			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
-			$("#menu_lateral").hide().fadeIn('fast');
+			 document.getElementById("inputBusqueda").focus();
+			//window.localStorage.setItem("busqueda", $("#inputBusqueda").val());
 		}
 		
     </script>	   
