@@ -19,6 +19,29 @@
           <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
         </div>
 	<style>	
+	nav {
+		height: 100%;
+		width: 280px;
+		background-color: #FFF;
+		padding-top: 60px;
+		left: 0;
+		top: 0;
+		z-index:2;
+		position: fixed;
+		overflow-y: auto;
+		overflow-x: visible;
+		transform: translate(-280px,0);
+	}
+	.ssm-overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0.2);
+		display: none;
+		z-index:1;
+	}
     .ol-zoom{
         display: block;
 		top: auto;
@@ -41,36 +64,34 @@
     
     img { display:inline;}
     </style>
-	<nav class="navbar navbar-default navbar-fixed-top fondo_top">
-     	<div class="container">
-        	<div style="height: 50px;">
+      <div id="top" style="position: fixed; top: 0;left:0; width:100%; z-index:2000; background-color:#FFFDFD;">
+            <div style="height: 50px;">
                 <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
                 <div class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
+                <a class="ssm-open-nav" href="#" title="Open / close">Open / close</a>
                 <div id="top_titulo"><span>ALPI Accesible</span></div>
             </div>	
              <div id="divInfoEntidad" style="display:none; width:100%; border-top: solid 2px #e5e5e5;">
-            	<div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
+                <div id="swipe_zona_marker;" style="border-bottom: solid 2px #e5e5e5;">
                     <div class="row" style="padding: 10px;">
                         <div class="col-xs-4" style="text-align: center;">
                             <a id="infoEntidadImgA" href="#"><img id="infoEntidadImg" src="#" style="height: 80px;border-radius: 10px;"></a>
                         </div>
                         <div class="col-xs-8"> 
-							<i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
+                            <i id="marker_cruz" class="fa fa-times" style="font-size: 16px; float: right; margin-right: 0px; margin-top: 0px;"></i>
                             <h5 style="margin-top: 0px;" id="infoEntidadTitulo"></h5>
                             <span id="infoEntidadCopete"></span>
                         </div>
                     </div>
                 </div>
                 <div id="div_toggle_detalle" style="width:100%; text-align: center;">
-                	<i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
+                    <i id="marker_flecha" class="fa fa-caret-down" style="padding: 8px; font-size: 16px;"></i>
                 </div>
                 <div id="divInfoEntidadDetalle" style="display: none; padding-bottom: 5px">                               
                 </div>
-            </div>        
-    	</div>
-        
-
-        <div id="menu_lateral" class="menu sb-slidebar sb-left sb-style-push sb-slide">
+            </div> 
+         </div>       
+        <nav>
             <div class="col-xs-12">
                 <p class="menu_opciones" style="font-size: 16px; text-align: center;"><b>¿Que estas buscando?</b></p>
             </div>
@@ -96,10 +117,9 @@
             <div class="col-xs-12 row" style="margin-top: 15px; margin-left:5px">
                 <div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
             </div>
-		</div>  		
-    </nav>
-	<div data-snap-ignore="true">
-          
+		</nav>  		
+        <div class="ssm-overlay"></div>
+	<div data-snap-ignore="true">          
         <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
             <button type="button" class="btn btn-primary boton_blanco" onclick="centrarMiPosicion()" 
             style="border-radius: 50px; height: 50px; width: 50px;">
@@ -120,6 +140,7 @@
 	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
     <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>  
     <script type="text/javascript" src="js/libs/slidebars.min.js"></script>   
+    <script type="text/javascript" src="js/libs/jquery.slideandswipe.min.js"></script>
 
     <script type="text/javascript">
 		var mySlidebars;
@@ -150,8 +171,8 @@
 				});
 				/**/
 				
-				
-				mySlidebars = new $.slidebars();
+				$('nav').slideAndSwipe();
+				//mySlidebars = new $.slidebars();
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
 						$("#divInfoEntidadDetalle").show("slow");
