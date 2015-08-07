@@ -230,6 +230,7 @@ h1 {
 .menu{
 	background-color: #ededed !important;
 	margin-top: 50px !important;
+	z-index: 2000;
 }
 
 .menu_opciones{
