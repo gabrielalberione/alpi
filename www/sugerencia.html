@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <title>Sugerencia</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-	<form id="formSugerencia" role="form">
-	<div class="row">
-    	<div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+<body style="background-color: #FFF;">
+	<div class="row" style="background-color: #FFF;">
+    	<div class="col-xs-12" style="text-align: center; padding-top: 20px;">
 	        <img src="img/logo_completo.png" style="height: 80px;">
         </div>
-    	<div class="col-xs-12" style="text-align: left; padding: 20px;">
+    	<div id="divForm" class="col-xs-12" style="text-align: left; padding: 20px;">
+			<form id="formSugerencia" role="form">
         	<p>Por favor complete el siguiente formulario. Le agradecemos por ayudarnos a mejorar la aplicación.</p>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
@@ -29,13 +30,13 @@
                 <textarea class="form-control" rows="3" id="mensaje" required
                        placeholder="¿Que cambiaría?"></textarea>
             </div>
-			<div id="divEnviarSugerencia"></div>
 			<div>
 				<button type="submit" class="btn btn-default" style="float:right;">Enviar Sugerencia</button>
 			</div>
-        </div>	
+			</form>
+        </div>
+		<div class="col-xs-12" id="divEnviarSugerencia" style="padding: 20px;"></div>
     </div>
-	</form>
 	
     <script type="text/javascript" src="js/libs/jquery.js"></script>		
     <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
@@ -48,6 +49,7 @@
 	});
 	function enviarSugerencia(){
 		$('#divEnviarSugerencia').html('<div class="alert alert-info" role="alert">Enviando sugerencia...</div>');
+		$('#divForm').hide(500);
 		
 		var url = parent.window.urlHost+'/ws/sugerencias/nueva';
 		$.ajax({
@@ -56,11 +58,13 @@
 			data: { nombre: $('#nombre').val(), email: $('#email').val(), mensaje: $('#mensaje').val() }
 		})
 		.done(function( msg ) {
+			/**/
 			if (msg.indexOf('false') == -1){
-				$('#divEnviarSugerencia').html('<div class="alert alert-success" role="alert">Se ha enviado su sugerencia. Muchas gracias!</div>');
+				$('#divEnviarSugerencia').html('<div class="alert alert-success" role="alert">Se ha enviado su sugerencia. Muchas gracias!<div style="text-align:center; padding-top: 10px;"><button type="button" onclick="parent.jAlertSugerencias.closeAlert()" class="btn btn-default">Cerrar</button></div></div>');
 			} else{
-				$('#divEnviarSugerencia').html('<div class="alert alert-danger" role="alert">No se ha podido enviar su sugerencia, por favor intente nuevamente.</div>');
+				$('#divEnviarSugerencia').html('<div class="alert alert-danger" role="alert">No se ha podido enviar su sugerencia, por favor intente nuevamente.<br><div style="text-align:right"><button type="button" onclick="$(\'#divForm\').show(500); $(\'#divEnviarSugerencia\').html(\'\');" class="btn btn-default">volver</button></div></div>');
 			}
+			/**/
 		});
 	}
 	</script>

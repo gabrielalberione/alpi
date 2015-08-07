@@ -28,9 +28,14 @@
     
     <script type="text/javascript">
     $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
-    if ($('#inputBusqueda').val().length > 2){
+    if (($('#inputBusqueda').val().length > 2) || ($('#selectRubrosBusqueda').val() != -1)){
 		var urlHost = 'http://190.12.101.74/ais/alpi';
         var condicion = " nombre iLIKE '%"+$('#inputBusqueda').val()+"%' ";
+		
+		if ($('#selectRubrosBusqueda').val() != -1){
+			condicion += " AND lugaresoficiales_rubro_id = "+$('#selectRubrosBusqueda').val();
+		}
+		
         $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
             var items = [];
             $.each( data.features, function( key, val ) {
@@ -58,18 +63,24 @@
                 html += '</div>';
                 $('#divResultadoBusqueda').html(html);
 				var cerrarMensaje = setInterval(function() {
-					$('#divResultadoBusqueda').html("");
+					$('#divResultadoBusqueda').hide(500, function(){
+						$('#divResultadoBusqueda').html("");
+						$('#divResultadoBusqueda').show();
+					});
 					clearInterval(cerrarMensaje);
-				}, 2000);
+				}, 3000);
             }
     
         });
     } else{
-        $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Ingrese 3 o más caracteres.</div>');
+        $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
 		var cerrarMensaje = setInterval(function() {
-			$('#divResultadoBusqueda').html("");
+			$('#divResultadoBusqueda').hide(500, function(){
+				$('#divResultadoBusqueda').html("");
+				$('#divResultadoBusqueda').show();
+			});
 			clearInterval(cerrarMensaje);
-		}, 2000);
+		}, 3000);
     }
     
     </script>

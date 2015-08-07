@@ -72,6 +72,10 @@
 
         <div id="menu_lateral" class="sb-slidebar sb-left sb-style-push menu" style="z-index:2000;">
 			<div class="row" style="padding: 10px;">
+				<div class="col-xs-12">
+					<select id="selectRubrosBusqueda" class="form-control">
+					</select>
+				</div>
 				<div class="col-xs-10 search">
 					<input id="inputBusqueda" name="inputBusqueda" type="text" placeholder="Que estas buscando?">
 				</div>
@@ -119,6 +123,7 @@
 
     <script type="text/javascript">
 		var mySlidebars;
+		var jAlertSugerencias;
 		app.initialize();		
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
@@ -127,6 +132,23 @@
 			      if(event.which == 13) 
 					realizarBusqueda();
 				});
+
+				/* en base a los rubros arma el selectRubrosBusqueda */
+				$.getJSON( urlHost+"/ws/entidades/listarcompleto/lugaresoficiales_rubro/nombre/1", function( data ) {
+					$('#selectRubrosBusqueda').append($('<option>', {
+						value: -1,
+						text: '-- TODOS --'
+					}));
+						
+					var items = [];
+					$.each( data, function( key, item ) {
+						$('#selectRubrosBusqueda').append($('<option>', {
+							value: item[0].id,
+							text: item[0].nombre
+						}));
+					});
+				});
+				/**/
 				
 				
 				mySlidebars = new $.slidebars();
@@ -152,7 +174,10 @@
 				});
 				$('.jframe_sugerencia').alertOnClick({
 				   'iframe': 'sugerencia.html?urlHost='+urlHost,
-				   'size': 'xlg' 
+				   'size': 'xlg',
+				   'onOpen': function(alert){
+						jAlertSugerencias = alert;
+				   }
 				});
 			});
 			
