@@ -9,6 +9,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener('focusout', function(e) {window.scrollTo(0, 0)});
     },
     // deviceready Event Handler
     //
