@@ -213,7 +213,7 @@
 		});
 		
 		function realizarBusqueda(){
-			cordova.plugins.Keyboard.close();
+			SoftKeyboard.hide();
 			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
 		}
 		
