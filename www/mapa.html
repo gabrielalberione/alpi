@@ -217,9 +217,15 @@
 		
 		function realizarBusqueda(){
 			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
-			//mySlidebars.slidebars.close();
-			//mySlidebars.slidebars.open();
 		}
+		
+		$(document).on('blur','input, select, textarea',function(){
+             if(OSName=== 'iOS' && ver[0] === 7){
+                   if($(this).attr('readonly')===undefined){
+                   $('#menu_lateral').show();
+                   }
+              }
+		});
     </script>	   
 </body>
 </html>
