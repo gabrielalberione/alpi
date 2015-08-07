@@ -38,9 +38,10 @@
 	<gap:plugin name="br.com.paveisitemas.splashscreen" version="2.1.1" />
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />		
-	<preference name="FadeSplashScreen" value="false"/>
-	<preference name="SplashScreen" value="xhdpi" />
-	<preference name="SplashScreenDelay" value="3000" />
-	<preference name="SplashMaintainAspectRatio" value="true" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="HideKeyboardFormAccessoryBar" value="true" />
+	<preference name="KeyboardDisplayRequiresUserAction" value="false" />
+	<preference name="KeyboardShrinksView" value="true" />
+	<preference name="SuppressesIncrementalRendering" value="false" />
 	<icon src="icon.png" />
 </widget>
