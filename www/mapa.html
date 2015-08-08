@@ -11,6 +11,7 @@
     <link href="css/jAlert-v3.css" rel="stylesheet">
     <link href="css/snap.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/animacion_carga.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<style>	
@@ -46,8 +47,14 @@
 	.snap-drawer{
 		background-color:#EEEEEE;
 	}
-    
+	
     </style>
+    <div id="cargando">
+        <div class="sk-chasing-dots">
+          <div class="sk-child sk-dot1"></div>
+          <div class="sk-child sk-dot2"></div>
+        </div>
+    </div>
 	<div class="snap-drawers">
          <div class="snap-drawer snap-drawer-left">
             <div class="col-xs-12 fondo_top" style="height:50px;">
@@ -234,6 +241,7 @@
 		});
 		
 		function realizarBusqueda(){
+			$("#cargando").show();
 			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
 			 $("inputBusqueda").bind("blur", function(e) {
 				window.scrollTo(0.0);
