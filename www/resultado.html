@@ -27,6 +27,7 @@
     <div id="divResultadoBusqueda"></div>
     
     <script type="text/javascript">
+	var cerrarMensajeResultado;
     $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
     if (($('#inputBusqueda').val().length > 2) || ($('#selectRubrosBusqueda').val() != -1)){
 		var urlHost = 'http://190.12.101.74/ais/alpi';
@@ -62,12 +63,12 @@
                 html += 'No se han encontrado resultados.';
                 html += '</div>';
                 $('#divResultadoBusqueda').html(html);
-				var cerrarMensaje = setInterval(function() {
+				cerrarMensajeResultado = setInterval(function() {
 					$('#divResultadoBusqueda').hide(500, function(){
 						$('#divResultadoBusqueda').html("");
 						$('#divResultadoBusqueda').show();
 					});
-					clearInterval(cerrarMensaje);
+					clearInterval(cerrarMensajeResultado);
 				}, 3000);
             }
     
@@ -75,13 +76,14 @@
 		$("#cargando").hide();
     } else{
         $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
-		var cerrarMensaje = setInterval(function() {
+		cerrarMensajeResultado = setInterval(function() {
 			$('#divResultadoBusqueda').hide(500, function(){
 				$('#divResultadoBusqueda').html("");
 				$('#divResultadoBusqueda').show();
 			});
-			clearInterval(cerrarMensaje);
+			clearInterval(cerrarMensajeResultado);
 		}, 3000);
+		$("#cargando").hide();
     }
     </script>
 </html>
