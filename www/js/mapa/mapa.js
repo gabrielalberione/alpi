@@ -74,7 +74,6 @@ function inicializar(){
 		
 	map.on('singleclick', function(evt) {
 		$("#divInfoEntidad").hide();
-		mySlidebars.slidebars.close();
 		/* verifica si hay entidades en layers tipo vector GeoJSON */
 		recorreEntidadesEnMapaPorPixel(evt.pixel);
 	});

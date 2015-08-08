@@ -41,7 +41,7 @@
             $.each( data.features, function( key, val ) {
                 var feature = data.features[key];
                 var coord = ol.proj.transform(feature.geometry.coordinates,'EPSG:4326','EPSG:3857');
-                var html = "<div onclick='mySlidebars.slidebars.close(); ubicarEnMapa("+coord[0]+","+coord[1]+")'>";
+                var html = "<div onclick='snapper.close(\"left\");  ubicarEnMapa("+coord[0]+","+coord[1]+")'>";
                 html += '<div class="rb_contenedor_icono"><img src="'+urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.properties.rubro_id+'.png'+'"></im></div>';                                                    
                 html += '<div class="rb_contenedor_info">';
 				html += '<span><b>'+feature.properties.nombre+'</b></span><br>';
