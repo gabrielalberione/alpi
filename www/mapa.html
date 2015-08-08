@@ -35,32 +35,47 @@
     }
     
     img { display:inline;}	
+	
+	.snapjs-left .snap-drawers {
+		display: block;
+	}
+	.snap-drawers {
+		display: none;
+		background-color:#EEEEEE;
+	}
+	.snap-drawer{
+		background-color:#EEEEEE;
+	}
+    
     </style>
 	<div class="snap-drawers">
-         <div class="snap-drawer snap-drawer-left" style="margin-top: 50px; padding: 10px;">
-            <div>
+         <div class="snap-drawer snap-drawer-left">
+            <div class="col-xs-12 fondo_top" style="height:50px;">
+				<div id="top_titulo" style="border-bottom: 1px solid #e5e5e5; padding: 12px;"><span>Menú de Opciones</span></div>
+            </div>
+            <div class="col-xs-12" style="margin-top: 10px;">
                 <p class="menu_opciones" style="font-size: 16px; text-align: center;"><b>¿Que estas buscando?</b></p>
             </div>
-            <div>
+            <div class="col-xs-12">
                 <select id="selectRubrosBusqueda" class="input_buscar">
                 </select>
             </div>
-            <div style="margin-top: 15px;">
+            <div class="col-xs-12" style="margin-top: 15px;">
                 <input id="inputBusqueda" class="input_buscar" name="inputBusqueda" type="text" placeholder="buscar por nombre...">
             </div>
-            <div style="margin-top: 15px;">
+            <div class="col-xs-12" style="margin-top: 15px;">
                 <button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
                 style="border-radius: 40px; height: 40px; width: 100%;">
                     <i class="fa fa-search" style="margin-left:-1px;"></i>
                 </button>
             </div>
-            <div style="margin-top: 20px; margin-left:5px">
+            <div class="col-xs-12" style="margin-top: 20px; margin-left:5px">
                 <div id="divAjaxResultadoBusqueda"></div>
             </div>
-            <div  style="margin-top: 20px; margin-left:5px">
+            <div class="col-xs-12"  style="margin-top: 20px; margin-left:5px">
                 <div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
             </div>
-            <div style="margin-top: 15px; margin-left:5px">
+            <div class="col-xs-12" style="margin-top: 15px; margin-left:5px">
                 <div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
             </div>
         </div> 
