@@ -250,7 +250,6 @@ h1 {
 	display: inline-block;
 	box-sizing: content-box;
 	padding: 10px 20px;
-	font: 16px "Times New Roman",Times,serif;
 	color: rgb(96, 98, 99);
 	text-overflow: clip;
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 0s;
