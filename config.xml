@@ -40,4 +40,23 @@
 	<preference name="KeyboardShrinksView" value="true" />
 	<preference name="show-splash-screen-spinner" value="false" />        
 	<icon src="icon.png" />
+	<!-- iPhone and iPod touch -->
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="320" height="480" />
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="640" height="960" />
+	
+	<!-- iPhone 5 / iPod Touch (5th Generation) -->
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="640" height="1136" />
+	
+	<!-- iPhone 6 -->
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="750" height="1334" />
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="1242" height="2208" />
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="2208" height="1242" />
+	
+	<!-- iPad -->
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="768" height="1024" />
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="1024" height="768" />
+	
+	<!-- Retina iPad -->
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="1536" height="2048" />
+	<gap:splash src="/img/splash.png" gap:platform="ios" width="2048" height="1536" />	
 </widget>
