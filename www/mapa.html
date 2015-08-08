@@ -3,7 +3,7 @@
 <head >
     <meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ALPI Accesible</title>
+    <title>ALPI accesible</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link href="js/ol3/ol.css" rel="stylesheet" type="text/css">
@@ -13,11 +13,6 @@
     <link href="css/snap.css" rel="stylesheet">
 </head>
 <body>
-     <div class="spinner" style="display: none;" id="splashLoading">
-          <div class="cube1"></div>
-          <div class="cube2"></div>
-          <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
-        </div>
 	<style>	
     .ol-zoom{
         display: block;
@@ -39,41 +34,41 @@
         display: none;
     }
     
-    img { display:inline;}
+    img { display:inline;}	
     </style>
 	<div class="snap-drawers">
-         <div class="snap-drawer snap-drawer-left" style="margin-top: 50px; padding-top: 10px;">
-             <div class="col-xs-12">
+         <div class="snap-drawer snap-drawer-left" style="margin-top: 50px; padding: 10px;">
+            <div>
                 <p class="menu_opciones" style="font-size: 16px; text-align: center;"><b>¿Que estas buscando?</b></p>
             </div>
-            <div class="col-xs-12">
+            <div>
                 <select id="selectRubrosBusqueda" class="input_buscar">
                 </select>
             </div>
-            <div class="col-xs-12 search" style="margin-top: 15px;">
+            <div style="margin-top: 15px;">
                 <input id="inputBusqueda" class="input_buscar" name="inputBusqueda" type="text" placeholder="buscar por nombre...">
             </div>
-            <div class="col-xs-12" style="margin-top: 15px;">
+            <div style="margin-top: 15px;">
                 <button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
-                style="border-radius: 40px; height: 40px; width: 100%; float:right;">
+                style="border-radius: 40px; height: 40px; width: 100%;">
                     <i class="fa fa-search" style="margin-left:-1px;"></i>
                 </button>
             </div>
-            <div class="col-xs-12 row" style="margin-top: 20px; margin-left:5px">
+            <div style="margin-top: 20px; margin-left:5px">
                 <div id="divAjaxResultadoBusqueda"></div>
             </div>
-            <div class="col-xs-12 row" style="margin-top: 20px; margin-left:5px">
+            <div  style="margin-top: 20px; margin-left:5px">
                 <div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
             </div>
-            <div class="col-xs-12 row" style="margin-top: 15px; margin-left:5px">
+            <div style="margin-top: 15px; margin-left:5px">
                 <div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
             </div>
         </div> 
     </div>    		
-    <div id="content">    
+    <div id="contenido"  class="snap-content">    
         <nav class="navbar navbar-default navbar-fixed-top fondo_top">        
             <div class="container">
-                <div style="height: 50px;">
+                <div id="do-drag" style="height: 50px;">
                     <div id="top_logo"><img src="img/logo.png" style="height: 30px; margin-top: 5px"></div>
                     <div id="btn_menu" class="sb-toggle-left top_btn_menu"><i class="fa fa-bars"></i></div>
                     <div id="top_titulo"><span>ALPI Accesible</span></div>
@@ -109,18 +104,23 @@
             position: absolute; top: 0px;"></div>  -->
         <div id="map" style="width:100%;height:100%;z-index:2000;"></div>
      </div>
-	<script type="text/javascript" src="cordova.js"></script>	        
+	<script type="text/javascript" src="cordova.js"></script>	  
     <script type="text/javascript" src="js/ol3/ol.js"></script>	
     <script type="text/javascript" src="js/index.js"></script>    
-    <script type="text/javascript" src="js/libs/jquery.js"></script>		    
+    <script type="text/javascript" src="js/libs/jquery.js"></script>		     
     <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script> 
     <script type="text/javascript" src="js/mapa/mapa.js"></script>
 	<script type="text/javascript" src="js/libs/jAlert-functions.min.js"></script>
     <script type="text/javascript" src="js/libs/jAlert-v3.min.js"></script>    
-    <script type="text/javascript" src="js/libs/snap.js"></script>   
+    <script type="text/javascript" src="js/libs/snap.js"></script>        
 
     <script type="text/javascript">
+		var snapper = new Snap({
+			element: document.getElementById('contenido'),
+			dragger: document.getElementById('do-drag'),
+			disable: 'right'
+		});				
 		var mySlidebars;
 		var jAlertSugerencias;
 		app.initialize();		
@@ -132,10 +132,6 @@
 				if(busqueda != ""){
 					var resultado = window.localStorage.getItem("resultado");
 				}*/
-				var snapper = new Snap({
-					element: document.getElementById('content')             
-				});
-				
 				$('#btn_menu').click(function(e) {
 					 snapper.open('left');  
 				});
