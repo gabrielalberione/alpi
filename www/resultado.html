@@ -38,6 +38,9 @@
 		}
 		
         $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
+			
+			$("#cargando").hide();
+		
             var items = [];
             $.each( data.features, function( key, val ) {
                 var feature = data.features[key];
@@ -73,7 +76,6 @@
             }
     
         });
-		$("#cargando").hide();
     } else{
         $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
 		cerrarMensajeResultado = setInterval(function() {
