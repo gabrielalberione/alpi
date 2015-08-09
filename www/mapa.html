@@ -243,15 +243,20 @@
 		function realizarBusqueda(){
 			if(window.navigator.onLine)
 			{					
+				$.jAlert({
+			          'title': 'ALPI Accesible',
+			          'content': 'La aplicación requiere conexión a internet',
+			          'theme': 'red',
+			          'closeOnClick': true 
+		           });
+			}
+			else
+			{
 				$("#cargando").show();
 				$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
 				 $("inputBusqueda").bind("blur", function(e) {
 					window.scrollTo(0.0);
 				});
-			}
-			else
-			{
-				alert('This application requires internet. Please connect to the internet.');
 			}
 		}
 
