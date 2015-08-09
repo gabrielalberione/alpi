@@ -241,11 +241,24 @@
 		});
 		
 		function realizarBusqueda(){
-			$("#cargando").show();
-			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
-			 $("inputBusqueda").bind("blur", function(e) {
-				window.scrollTo(0.0);
-			});
+			if(navigator.connection.type==0)
+			{
+				alert('This application requires internet. Please connect to the internet.');
+			
+			}
+			else if(navigator.connection.type=='none')
+			{
+				alert('This application requires internet. Please connect to the internet.');
+			
+			}
+			else
+			{
+				$("#cargando").show();
+				$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+				 $("inputBusqueda").bind("blur", function(e) {
+					window.scrollTo(0.0);
+				});
+			}
 			//window.localStorage.setItem("busqueda", $("#inputBusqueda").val());
 		}
 
