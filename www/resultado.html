@@ -37,7 +37,6 @@
 			condicion += " AND lugaresoficiales_rubro_id = "+$('#selectRubrosBusqueda').val();
 		}
 		
-		$.ajaxSetup({timeout:8000}); //
         $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
 			
 			$("#cargando").hide();
