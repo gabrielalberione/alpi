@@ -78,7 +78,9 @@
 				/**/
             }
     
-        });
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+			$('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Error de conexión.</div>');
+		});
     } else{
         $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
 		/**
