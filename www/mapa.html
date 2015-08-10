@@ -241,6 +241,7 @@
 		});
 		
 		function realizarBusqueda(){
+			/**
 			if(window.navigator.onLine)
 			{					
 				$.jAlert({
@@ -252,12 +253,13 @@
 			}
 			else
 			{
-				$("#cargando").show();
+			/**/
+				//$("#cargando").show();
 				$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
-				 $("inputBusqueda").bind("blur", function(e) {
+				$("inputBusqueda").bind("blur", function(e) {
 					window.scrollTo(0.0);
 				});
-			}
+			// }
 		}
 
  			
