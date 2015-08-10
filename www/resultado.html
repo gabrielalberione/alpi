@@ -67,6 +67,7 @@
                 html += 'No se han encontrado resultados.';
                 html += '</div>';
                 $('#divResultadoBusqueda').html(html);
+				/**
 				cerrarMensajeResultado = setInterval(function() {
 					$('#divResultadoBusqueda').hide(500, function(){
 						$('#divResultadoBusqueda').html("");
@@ -74,11 +75,13 @@
 					});
 					clearInterval(cerrarMensajeResultado);
 				}, 3000);
+				/**/
             }
     
         });
     } else{
         $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
+		/**
 		cerrarMensajeResultado = setInterval(function() {
 			$('#divResultadoBusqueda').hide(500, function(){
 				$('#divResultadoBusqueda').html("");
@@ -86,6 +89,7 @@
 			});
 			clearInterval(cerrarMensajeResultado);
 		}, 3000);
+		/**/
 		$("#cargando").hide();
     }
     </script>
