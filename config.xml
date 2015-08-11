@@ -38,7 +38,10 @@
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />	
 	<preference name="KeyboardShrinksView" value="true" />
-	<preference name="show-splash-screen-spinner" value="false" />        
+	<preference name="show-splash-screen-spinner" value="false" />  
+	<feature name="Geolocation">
+		<param name="ios-package" value="CDVLocation" />
+	</feature>	
 	<icon src="icon.png" />
 	<!-- iPhone and iPod touch -->
 	<gap:splash src="/img/splash.png" gap:platform="ios" width="320" height="480" />
