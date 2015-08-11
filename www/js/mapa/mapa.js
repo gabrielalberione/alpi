@@ -130,7 +130,7 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 			htmlDetalle += '<i class="fa fa-phone marker_info_iconos" style="padding-left: 2px;"></i> '+feature.get('telefono')+'<br>';
 			htmlDetalle += '<i class="fa fa-envelope marker_info_iconos"></i> '+feature.get('email')+'<br>';
 			htmlDetalle += '<i class="fa fa-globe marker_info_iconos" style="padding-left: 2px; margin-bottom: 10px;"></i> '+feature.get('web')+'<br>';
-			htmlDetalle += '<div style="white-space: pre;">'+feature.get('descripcion')+'</div>';
+			htmlDetalle += '<div style="white-space: pre-line;">'+feature.get('descripcion')+'</div>';
 			$('#divInfoEntidadDetalle').html(htmlDetalle);
 			
 			var ms = feature.get('Multimedias');

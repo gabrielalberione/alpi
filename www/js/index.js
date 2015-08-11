@@ -30,15 +30,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
-	
-	function onSuccess(position) {
-	  // your callback here 
-	}
-
-	function onError(error) { 
-	  // your callback here
-	}
+    }		
 };
 
 // cuando devuelve la pos el gps
@@ -60,4 +52,12 @@ var onSuccessGPS = function(position) {
 function onErrorGPS(error) {
    /* alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');*/
+}
+
+function onSuccess(position) {
+	  // your callback here 
+}
+
+function onError(error) { 
+  // your callback here
 }
