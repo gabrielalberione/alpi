@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.alberione.alpi" version="0.0.1" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.alberione.alpi.accesible" version="0.0.1" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ALPI Accesible</name>
     <description>
         ALPI Accesible colabora con las personas con discapacidad y su entorno a través de la localización y calificación de los lugares accesibles en Argentina.
