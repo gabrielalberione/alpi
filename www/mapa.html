@@ -157,6 +157,13 @@
 				if(busqueda != ""){
 					var resultado = window.localStorage.getItem("resultado");
 				}*/
+				if((navigator.network.connection.type).toUpperCase() != "NONE" &&
+				   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+					alert("error");	   
+				}else{
+					alert("ok");
+				}
+				
 				$('#btn_menu').click(function(e) {
 					 snapper.open('left');  
 				});
