@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.1' encoding='utf-8'?>
 <widget id="com.alberione.alpi.accesible" version="0.0.2" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ALPI Accesible</name>
     <description>
@@ -42,8 +42,6 @@
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>	
-	
-	
 	
 	<!-- CONFIGURACION DE LOS ICONOS Y SPLASHSCREEN (FALSOS) -->
 	
