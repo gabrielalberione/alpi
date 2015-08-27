@@ -10,7 +10,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener("offline", onOffline(), false);
-		document.addEventListener("onOnline", onOnline(), false);
+		document.addEventListener("online", onOnline(), false);
 		document.addEventListener('focusout', function(e) {window.scrollTo(0, 0)});
     },
     // deviceready Event Handler
