@@ -9,6 +9,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener("offline", onOffline(), false);
+		document.addEventListener("onOnline", onOnline(), false);
 		document.addEventListener('focusout', function(e) {window.scrollTo(0, 0)});
     },
     // deviceready Event Handler
@@ -19,7 +21,6 @@ var app = {
         app.receivedEvent('deviceready');
 		navigator.splashscreen.hide();
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);  
-		checkConnection();   
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -63,18 +64,10 @@ function onError(error) {
   // your callback here
 }
 
-function checkConnection() {
-	var networkState = navigator.connection.type;
+function onOffline(){
+	alert("offline");	
+}
 
-	var states = {};
-	states[Connection.UNKNOWN]  = 'Unknown connection';
-	states[Connection.ETHERNET] = 'Ethernet connection';
-	states[Connection.WIFI]     = 'WiFi connection';
-	states[Connection.CELL_2G]  = 'Cell 2G connection';
-	states[Connection.CELL_3G]  = 'Cell 3G connection';
-	states[Connection.CELL_4G]  = 'Cell 4G connection';
-	states[Connection.CELL]     = 'Cell generic connection';
-	states[Connection.NONE]     = 'No network connection';
-
-	alert('Connection type: ' + states[networkState]);
+function onOnline(){
+	alert("online");	
 }
