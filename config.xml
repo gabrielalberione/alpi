@@ -18,6 +18,7 @@
 		<false/>
 	</gap:config-file>	
    <feature name="StatusBar">
+   </feature>	
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
