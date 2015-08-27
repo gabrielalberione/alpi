@@ -18,8 +18,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		document.addEventListener('offline', this.onDeviceOffline, false);
-		document.addEventListener('online', this.onDeviceOnline, false);		
+		document.addEventListener('offline', onDeviceOffline, false);
+		document.addEventListener('online', onDeviceOnline, false);		
 		if((navigator.network.connection.type).toUpperCase() != "NONE" &&
 		   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
 			this.onDeviceOnline();
@@ -28,16 +28,6 @@ var app = {
 		}
 		navigator.splashscreen.hide();
     },
-	onDeviceOnline: function() {
-		alert("online");
-		var divEstado = document.getElementById("estado_conexion");
-		divEstado.setAttribute('style', 'display:none;');	
-	},
-	onDeviceOffline: function() {
-		alert("offline");	
-		var divEstado = document.getElementById("estado_conexion");
-		divEstado.setAttribute('style', 'display:block;');
-	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -78,5 +68,17 @@ function onSuccess(position) {
 
 function onError(error) { 
   // your callback here
+}
+
+function onDeviceOffline(){
+	console.log("esta offline");	
+	var divEstado = document.getElementById("estado_conexion");
+	divEstado.setAttribute('style', 'display:block;');	
+}
+
+function onDeviceOnline(){
+	console.log("esta online");
+	var divEstado = document.getElementById("estado_conexion");
+	divEstado.setAttribute('style', 'display:none;');	
 }
 
