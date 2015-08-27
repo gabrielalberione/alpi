@@ -44,6 +44,7 @@
 	</feature>	
 	
 	<!-- ESTADO DE CONEXION -->
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
 	<!-- Android -->
 	<feature name="NetworkStatus">
     	<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
