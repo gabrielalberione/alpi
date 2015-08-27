@@ -52,13 +52,7 @@ var onSuccessGPS = function(position) {
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');*/
     
-    puntoGPS(position.coords.longitude, position.coords.latitude);
-	if((navigator.network.connection.type).toUpperCase() != "NONE" &&
-	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
-		alert("error");	   
-	}else{
-		alert("ok");
-	}	
+    puntoGPS(position.coords.longitude, position.coords.latitude);	
 };
 
 // onError Callback receives a PositionError object
@@ -76,14 +70,23 @@ function onError(error) {
   // your callback here
 }
 
+function verificiarConexion(){
+	if((navigator.network.connection.type).toUpperCase() != "NONE" &&
+	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+		onDeviceOnline();	   
+	}else{
+		onDeviceOffline();
+	}
+}
+
 function onDeviceOffline(){
-	console.log("esta offline");	
+	//console.log("esta offline");	
 	var divEstado = document.getElementById("estado_conexion");
 	divEstado.setAttribute('style', 'display:block;');	
 }
 
 function onDeviceOnline(){
-	console.log("esta online");
+	//console.log("esta online");
 	var divEstado = document.getElementById("estado_conexion");
 	divEstado.setAttribute('style', 'display:none;');	
 }

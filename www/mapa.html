@@ -156,7 +156,12 @@
 				/*var busqueda = window.localStorage.getItem("busqueda");
 				if(busqueda != ""){
 					var resultado = window.localStorage.getItem("resultado");
-				}*/				
+				}*/		
+				
+					
+				verifConexion = setInterval(function() {
+					verificiarConexion();	
+				}, 5000);
 				
 				$('#btn_menu').click(function(e) {
 					 snapper.open('left');  
