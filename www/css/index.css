@@ -273,3 +273,12 @@ select.input_buscar{
 	background-size: 20px;
 }
 
+#estado_conexion{
+	z-index: 500;
+	background-color: rgba(172,23,25,0.80);
+	position: absolute;
+	margin-top: 50px;
+	width: 100%;
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}

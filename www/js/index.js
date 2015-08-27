@@ -11,8 +11,6 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener('focusout', function(e) {window.scrollTo(0, 0)});
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);  
-		document.addEventListener("offline", onOffline(), false);
-		document.addEventListener("online", onOnline(), false);		
     },
     // deviceready Event Handler
     //
@@ -20,8 +18,22 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		document.addEventListener('offline', this.onDeviceOffline, false);
+		document.addEventListener('online', this.onDeviceOnline, false);		
+		if((navigator.network.connection.type).toUpperCase() != "NONE" &&
+		   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+			this.onDeviceOnline();
+		}else{
+			this.onDeviceOffline();
+		}
 		navigator.splashscreen.hide();
     },
+	onDeviceOnline: function() {
+		alert("online");	
+	},
+	onDeviceOffline: function() {
+		alert("offline");	
+	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -64,10 +76,3 @@ function onError(error) {
   // your callback here
 }
 
-function onOffline(){
-	alert("offline");	
-}
-
-function onOnline(){
-	alert("online");	
-}
