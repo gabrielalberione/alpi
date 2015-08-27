@@ -43,6 +43,16 @@
 		<param name="ios-package" value="CDVLocation" />
 	</feature>	
 	
+	<!-- ESTADO DE CONEXION -->
+	<!-- Android -->
+	<feature name="NetworkStatus">
+    	<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+	</feature>
+	<!-- iOs -->
+	<feature name="NetworkStatus">
+    	<param name="ios-package" value="CDVConnection" />
+	</feature>
+	
 	<!-- CONFIGURACION DE LOS ICONOS Y SPLASHSCREEN (FALSOS) -->
 	
 	<icon src="/iconos/icon.png" />
