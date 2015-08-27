@@ -10,6 +10,9 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener('focusout', function(e) {window.scrollTo(0, 0)});
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);  
+		document.addEventListener("offline", onOffline(), false);
+		document.addEventListener("online", onOnline(), false);		
     },
     // deviceready Event Handler
     //
@@ -18,9 +21,6 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 		navigator.splashscreen.hide();
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);  
-		document.addEventListener("offline", onOffline(), false);
-		document.addEventListener("online", onOnline(), false);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
