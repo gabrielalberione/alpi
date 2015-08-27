@@ -53,6 +53,12 @@ var onSuccessGPS = function(position) {
           'Timestamp: '         + position.timestamp                + '\n');*/
     
     puntoGPS(position.coords.longitude, position.coords.latitude);
+	if((navigator.network.connection.type).toUpperCase() != "NONE" &&
+	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+		alert("error");	   
+	}else{
+		alert("ok");
+	}	
 };
 
 // onError Callback receives a PositionError object
