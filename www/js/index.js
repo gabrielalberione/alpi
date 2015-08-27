@@ -29,10 +29,14 @@ var app = {
 		navigator.splashscreen.hide();
     },
 	onDeviceOnline: function() {
-		alert("online");	
+		alert("online");
+		var divEstado = document.getElementById("estado_conexion");
+		divEstado.setAttribute('style', 'display:none;');	
 	},
 	onDeviceOffline: function() {
 		alert("offline");	
+		var divEstado = document.getElementById("estado_conexion");
+		divEstado.setAttribute('style', 'display:block;');
 	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
