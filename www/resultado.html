@@ -32,12 +32,13 @@
     if (($('#inputBusqueda').val().length > 2) || ($('#selectRubrosBusqueda').val() != -1)){
 		var urlHost = 'http://190.12.101.74/ais/alpi';
         var condicion = " nombre iLIKE '%"+$('#inputBusqueda').val()+"%' ";
-		
+		var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
+		var geomActual = pos4326[0]+","+pos4326[1];
 		if ($('#selectRubrosBusqueda').val() != -1){
 			condicion += " AND lugaresoficiales_rubro_id = "+$('#selectRubrosBusqueda').val();
 		}
 		
-        $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
+        $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion, posactual:geomActual}, function( data ) {
 			
 			$("#cargando").hide();
 		
@@ -49,7 +50,17 @@
                 html += '<div class="rb_contenedor_icono"><img src="'+urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.properties.rubro_id+'.png'+'"></im></div>';                                                    
                 html += '<div class="rb_contenedor_info">';
 				html += '<span><b>'+feature.properties.nombre+'</b></span><br>';
-				html += '<span>'+feature.properties.rubro+'</span>';
+				html += '<span>'+feature.properties.rubro+'</span><br>';
+				var distancia = feature.properties.distancia; 
+				distancia = Math.round(distancia * 100) / 100;
+				if (distancia > 1000) {
+					distancia = (Math.round(distancia / 1000 * 100) / 100) +
+					' ' + 'km';
+				} else {
+					distancia = (Math.round(distancia * 100) / 100) +
+					' ' + 'm';
+				}
+				html += '<span style="font-size: 11px;"><i>Distancia: '+distancia+'</i></span>';
 				html += '</div>';
                 html += "</div>";
                 items.push( html );
