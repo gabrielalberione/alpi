@@ -73,9 +73,14 @@ function onError(error) {
 function verificiarConexion(){
 	if((navigator.network.connection.type).toUpperCase() != "NONE" &&
 	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
-		onDeviceOnline();	   
+		onDeviceOnline();
+		if(!ban_estado_conexion){
+			refrescarMapa();
+		}
+		ban_estado_conexion = true;	   
 	}else{
 		onDeviceOffline();
+		ban_estado_conexion = false;
 	}
 }
 

@@ -29,6 +29,9 @@ var mapQuest = null; // mapQuest
 var bingMapsSatelital = null;
 var bingMaps = null;
 
+var ban_estado_conexion = true;
+
+
 $( document ).ready( function() { 
 	inicializar(); 
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
