@@ -52,6 +52,7 @@ function inicializar(){
 		
 	osm = new ol.layer.Tile({
 		id: 'base_'+1,
+		preload: Infinity,
 		name: 'osm',
 		type: 'base',
 		title: 'Open Street Map',
