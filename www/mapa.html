@@ -158,6 +158,7 @@
 					var resultado = window.localStorage.getItem("resultado");
 				}*/		
 				
+				cargarComboBusqueda();
 					
 				verifConexion = setInterval(function() {
 					verificiarConexion();	
@@ -172,22 +173,7 @@
 					realizarBusqueda();
 				});
 
-				/* en base a los rubros arma el selectRubrosBusqueda */
-				$.getJSON( urlHost+"/ws/entidades/listarcompleto/lugaresoficiales_rubro/nombre/1", function( data ) {
-					$('#selectRubrosBusqueda').append($('<option>', {
-						value: -1,
-						text: '-- TODOS --'
-					}));
-						
-					var items = [];
-					$.each( data, function( key, item ) {
-						$('#selectRubrosBusqueda').append($('<option>', {
-							value: item[0].id,
-							text: item[0].nombre
-						}));
-					});
-				});
-				/**/
+			
 				
 				$('#div_toggle_detalle').click(function(e) {  
 					if(bandera_divInfoEntidadDetalle == false){
@@ -269,6 +255,25 @@
 					window.scrollTo(0.0);
 				});
 			// }
+		}
+		
+		function cargarComboBusqueda(){
+			/* en base a los rubros arma el selectRubrosBusqueda */
+			$.getJSON( urlHost+"/ws/entidades/listarcompleto/lugaresoficiales_rubro/nombre/1", function( data ) {
+				$('#selectRubrosBusqueda').append($('<option>', {
+					value: -1,
+					text: '-- TODOS --'
+				}));
+					
+				var items = [];
+				$.each( data, function( key, item ) {
+					$('#selectRubrosBusqueda').append($('<option>', {
+						value: item[0].id,
+						text: item[0].nombre
+					}));
+				});
+			});
+			/**/
 		}
 
  			

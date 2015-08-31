@@ -76,6 +76,7 @@ function verificiarConexion(){
 		onDeviceOnline();
 		if(!ban_estado_conexion){
 			refrescarMapa();
+			cargarComboBusqueda();
 		}
 		ban_estado_conexion = true;	   
 	}else{
