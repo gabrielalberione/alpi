@@ -1,5 +1,5 @@
 
-var urlHost = 'http://190.12.101.74/ais/alpi';
+var urlHost = 'http://190.12.101.74/ais/alpi2';
 
 var map;
 var view;
