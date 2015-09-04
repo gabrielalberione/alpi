@@ -85,6 +85,9 @@
                 <div class="menu_opciones jframe_sugerencia"><i class="fa fa-envelope" style="margin-right: 5px;"></i>Sugerencias</div>
             </div>
             <div class="col-xs-12" style="margin-top: 15px; margin-left:5px">
+                <div class="menu_opciones jframe_quehacemos"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>Qué hacemos?</div>
+            </div>
+            <div class="col-xs-12" style="margin-top: 15px; margin-left:5px">
                 <div class="menu_opciones jframe_about"><i class="fa fa-info-circle" style="margin-right: 5px;margin-left:2px"></i>About</div>
             </div>
         </div> 
@@ -193,6 +196,13 @@
 				$('.jframe_about').alertOnClick({
 				   'iframe': 'about.html',
 				   'size': 'xlg' 
+				});
+				$('.jframe_quehacemos').alertOnClick({
+				   'iframe': 'quehacemos.html',
+				   'size': 'xlg',
+				   'onOpen': function(alert){
+						jAlertSugerencias = alert;
+				   }
 				});
 				$('.jframe_sugerencia').alertOnClick({
 				   'iframe': 'sugerencia.html?urlHost='+urlHost,

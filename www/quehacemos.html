@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Qué hacemos</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+	
+    <script type="text/javascript" src="js/libs/jquery.js"></script>		
+    <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: #FFF; width:auto;">
+    <div class="col-xs-12 row" style="text-align: center; padding-top: 20px;">
+        <img src="img/logo_completo.png" style="height: 80px;">
+    </div>
+    <div class="col-xs-12 row" style="text-align: left; padding: 25px">
+        <div id="divValor" style="font-family:'TradeGothic', Arial, sans-serif;">
+		</div>
+		<div class="panel panel-default" style="margin:0px; margin-top: 10px; font-family:'TradeGothic', Arial, sans-serif;">
+			<div class="panel-heading">Referencia</div>
+			<div class="panel-body" style="padding: 5px; ">
+				<div id="divReferencia">
+				</div>
+			</div>
+		</div>
+    </div>        
+	
+	<script>
+	(function($) {
+		$(document).ready(function() {
+			/* se busca el texto */
+			$.getJSON( parent.window.urlHost+"/ws/parametrizaciones/getvalor/quehacemos", function( data ) {						
+				var html = data.Parametrizacion.valor;
+				$('#divValor').html(html);
+			});
+			/**/
+			
+			/* se arma la referencia */
+			$.getJSON( parent.window.urlHost+"/ws/entidades/listarcompleto/lugaresoficiales_rubro/nombre/1", function( data ) {						
+				var items = [];
+				$.each( data, function( key, item ) {
+					$('#divReferencia').append("<div class='row' style='padding:3px;'>");
+					var html = '<img style="max-width: 32px" src="'+parent.window.urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+item[0].id+'.png'+'">';
+					$('#divReferencia').append('<div class="col-xs-4">'+html+'</div>');
+					$('#divReferencia').append('<div class="col-xs-8">'+item[0].nombre+'</div>');
+					$('#divReferencia').append("</div>");
+				});
+			});
+			/**/
+		});
+	}) (jQuery);
+	</script>
+</body>
+</html>
