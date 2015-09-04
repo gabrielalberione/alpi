@@ -30,7 +30,6 @@
 	var cerrarMensajeResultado;
     $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
     if (($('#inputBusqueda').val().length > 2) || ($('#selectRubrosBusqueda').val() != -1)){
-		var urlHost = 'http://190.12.101.74/ais/alpi';
         var condicion = " nombre iLIKE '%"+$('#inputBusqueda').val()+"%' ";
 		var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
 		var geomActual = pos4326[0]+","+pos4326[1];
