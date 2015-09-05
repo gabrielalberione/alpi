@@ -178,16 +178,7 @@
 			
 				
 				$('#div_toggle_detalle').click(function(e) {  
-					if(bandera_divInfoEntidadDetalle == false){
-						$("#divInfoEntidadDetalle").show("slow");
-						$("#marker_flecha").attr('class', 'fa fa-caret-up');
-						bandera_divInfoEntidadDetalle = true;
-						//mySlidebars.slidebars.open('right');
-					}else{
-						$("#divInfoEntidadDetalle").hide("slow");
-						$("#marker_flecha").attr('class', 'fa fa-caret-down');				   
-						bandera_divInfoEntidadDetalle = false;
-					}
+					verInfoDetallada();
 				});
 				$('#marker_cruz').click(function(e) {  					
 				   $("#divInfoEntidad").hide("slow");
@@ -243,6 +234,19 @@
 			});
 			
 		});
+		
+		function verInfoDetallada(){
+			if (bandera_divInfoEntidadDetalle == false){
+				$("#divInfoEntidadDetalle").show("slow");
+				$("#marker_flecha").attr('class', 'fa fa-caret-up');
+				bandera_divInfoEntidadDetalle = true;
+				//mySlidebars.slidebars.open('right');
+			}else{
+				$("#divInfoEntidadDetalle").hide("slow");
+				$("#marker_flecha").attr('class', 'fa fa-caret-down');				   
+				bandera_divInfoEntidadDetalle = false;
+			}
+		}
 		
 		function realizarBusqueda(){
 			/**

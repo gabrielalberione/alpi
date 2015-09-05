@@ -136,6 +136,9 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 			htmlDetalle += '<i class="fa fa-globe marker_info_iconos" style="padding-left: 2px; margin-bottom: 10px;"></i> '+feature.get('web')+'<br>';
 			htmlDetalle += '<div style="white-space: pre-line;">'+feature.get('descripcion')+'</div>';
 			$('#divInfoEntidadDetalle').html(htmlDetalle);
+			if (bandera_divInfoEntidadDetalle == true){
+				verInfoDetallada();
+			}
 			
 			var ms = feature.get('Multimedias');
 			$('#infoEntidadImg').attr('src','./img/sinimagen.png');
