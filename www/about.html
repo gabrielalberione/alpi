@@ -12,16 +12,9 @@
         <img src="img/logo_completo.png" style="height: 80px;">
     </div>
     <div class="col-xs-12 row" style="text-align: left; padding: 25px">
-        <p style="text-align: justify; font-size:14px"><b>ALPI Accesible</b> colabora con las personas con discapacidad y su entorno a través de la localización y calificación de los lugares accesibles en Argentina.</p>
-
-        <div style="padding-top:5px">
-			<p><b>E-mail:</b> </p>
-            <p><a href="mailto:accesibilidad@alpi.org.ar">accesibilidad@alpi.org.ar</a></p>
-            <p><b>Dirección:</b> </p>
-            <p>Av. Corrientes 3934, 1194 Ciudad De Buenos Aires</p>
-            <p><b>Teléfono:</b></p>
-            <p>011 4864-8988 int. 52</p>
-        </div>
+        <div id="divValor" style="font-family:'TradeGothic', Arial, sans-serif;">
+			Cargando información...
+		</div>
         <div style="padding-top:40px; text-align: right;">
             Desarrollo <a href="mailto:contacto@alberione.com.ar"><img src="./img/logo_alberione.png" width="110px"></a>
         </div>
@@ -29,5 +22,18 @@
 	
     <script type="text/javascript" src="js/libs/jquery.js"></script>		
     <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+	
+	<script>
+	(function($) {
+		$(document).ready(function() {
+			/* se busca el texto */
+			$.getJSON( parent.window.urlHost+"/ws/parametrizaciones/getvalor/about", function( data ) {						
+				var html = data.Parametrizacion.valor;
+				$('#divValor').html(html);
+			});
+			/**/
+		});
+	}) (jQuery);
+	</script>
 </body>
 </html>

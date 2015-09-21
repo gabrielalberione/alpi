@@ -8,6 +8,7 @@ var urlTile;
 var urlWMS;
 var mapFile;
 var urlGeoJson = urlHost+'/ws/entidades/listar/4';
+var layerLugaresOficiales;
 
 var posActual = [-6506141.183454158, -4110246.2464916063];
 var posInicial = [-6506141.183454158, -4110246.2464916063];
@@ -82,7 +83,7 @@ function inicializar(){
 		recorreEntidadesEnMapaPorPixel(evt.pixel);
 	});
 
-	var vectorLayer = new ol.layer.Vector({
+	layerLugaresOficiales = new ol.layer.Vector({
 		id: 1,
 		type: 'overlay',
 		nombre: 'lugaresoficiales',
@@ -117,7 +118,7 @@ function inicializar(){
 		}
 	});
 	
-	map.addLayer(vectorLayer);	
+	map.addLayer(layerLugaresOficiales);	
 	
 	view.setCenter(posInicial);
 };
@@ -261,4 +262,15 @@ function refrescarMapa(){
 			}));
 		}
 	}
+}
+
+function eliminarFiltroLugaresoficiales(){
+	var sourceNuevo = new ol.source.GeoJSON({
+		projection: 'EPSG:3857',
+		url: urlGeoJson
+	});
+	layerLugaresOficiales.setSource(sourceNuevo);
+	
+	$('#divFiltradoMsj').hide();
+    $('#divResultadoBusqueda').html('');
 }
