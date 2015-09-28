@@ -172,8 +172,8 @@ h1 {
 /* Estilo Principal */
 
 .boton_verde_alpi{
-	background-color: #6DC2B7;
-	border-color: #6DC2B7;
+	background-color: #834d9a;
+	border-color: #834d9a;
 }
 
 .boton_verde_alpi:hover{
@@ -197,7 +197,7 @@ h1 {
 	margin-top: -1px;
 	margin-left: 12px;
 	font-size: 18px;
-	color: #6DC2B7;
+	color: #834d9a;
 	font-weight: 900;
 	margin: auto;
 	text-align: center;
@@ -211,7 +211,7 @@ h1 {
 
 .top_btn_menu{
 	font-size: 24px;
-	color: rgba(109, 194, 183,1);
+	color: #834d9a;
 	margin-top: 9px;
 	float:left;	
 }
@@ -239,7 +239,7 @@ h1 {
 }
 
 .menu_opciones i{
-	color: #6DC2B7;
+	color: #834d9a;
 }
 
 .marker_info_iconos{
@@ -259,7 +259,7 @@ h1 {
 	border-color: -moz-use-text-color;
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.66);
 	border-radius: 8px;
-	box-shadow: 0px 2px 0px 0px rgba(109,194,183,0.40);
+	box-shadow: 0px 2px 0px 0px rgba(131,77,154,0.40);
 	width: 81%;
 	font-size: 14px;
 	-webkit-appearance: none;       
