@@ -83,6 +83,12 @@ function verificiarConexion(){
 		onDeviceOffline();
 		ban_estado_conexion = false;
 	}
+	
+	if (navigator.geolocation) {
+	// get location
+	} else {
+		alert("gps off");
+	}
 }
 
 function onDeviceOffline(){
