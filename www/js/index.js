@@ -58,8 +58,8 @@ var onSuccessGPS = function(position) {
 // onError Callback receives a PositionError object
 //
 function onErrorGPS(error) {
-   /* alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');*/
+   alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
 }
 
 function onSuccess(position) {
