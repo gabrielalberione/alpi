@@ -45,17 +45,17 @@ var onSuccessGPS = function(position) {
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');*/
 	var divEstado = document.getElementById("estado_gps");
-	divEstado.setAttribute('style', 'display:none;');	    
-    puntoGPS(position.coords.longitude, position.coords.latitude);	
+	/*divEstado.setAttribute('style', 'display:none;');	    
+    puntoGPS(position.coords.longitude, position.coords.latitude);	*/
 };
 
 // onError Callback receives a PositionError object
 //
 function onErrorGPS(error) {
-	if(error.code == 3){
+	/*if(error.code == 3){
 		var divEstado = document.getElementById("estado_gps");
 		divEstado.setAttribute('style', 'display:block;');	
-	}
+	}*/
   /* alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n'); */
 }
@@ -73,8 +73,8 @@ function verificiarConexion(){
 	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
 		onDeviceOnline();
 		if(!ban_estado_conexion){
-			//refrescarMapa();
-			//cargarComboBusqueda();
+			refrescarMapa();
+			cargarComboBusqueda();
 		}
 		ban_estado_conexion = true;	   
 	}else{
