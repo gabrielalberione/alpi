@@ -80,8 +80,8 @@ function verificiarConexion(){
 	   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
 		onDeviceOnline();
 		if(!ban_estado_conexion){
-			refrescarMapa();
-			cargarComboBusqueda();
+			//refrescarMapa();
+			//cargarComboBusqueda();
 		}
 		ban_estado_conexion = true;	   
 	}else{
