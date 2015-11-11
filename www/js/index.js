@@ -20,13 +20,6 @@ var app = {
         app.receivedEvent('deviceready');
 		document.addEventListener('offline', onDeviceOffline, false);
 		document.addEventListener('online', onDeviceOnline, false);		
-		if((navigator.network.connection.type).toUpperCase() != "NONE" &&
-		   (navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
-			this.onDeviceOnline();
-		}else{
-			this.onDeviceOffline();
-		}
-		navigator.splashscreen.hide();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
