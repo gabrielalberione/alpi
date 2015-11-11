@@ -45,19 +45,19 @@ var onSuccessGPS = function(position) {
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');*/
 	var divEstado = document.getElementById("estado_gps");
-	/*divEstado.setAttribute('style', 'display:none;');	    
-    puntoGPS(position.coords.longitude, position.coords.latitude);	*/
+	divEstado.setAttribute('style', 'display:none;');	    
+    puntoGPS(position.coords.longitude, position.coords.latitude);	
 };
 
 // onError Callback receives a PositionError object
 //
 function onErrorGPS(error) {
-	/*if(error.code == 3){
+	if(error.code == 3){
 		var divEstado = document.getElementById("estado_gps");
 		divEstado.setAttribute('style', 'display:block;');	
-	}*/
-  /* alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n'); */
+	}
+   alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n'); 
 }
 
 function onSuccess(position) {
