@@ -259,6 +259,17 @@ select.input_buscar{
 	color: rgb(255, 255, 255);
 }
 
+#estado_gps{
+	display: none;
+	z-index: 500;
+	background-color: rgba(131,77,154,1.00);
+	position: absolute;
+	margin-top: 50px;
+	width: 100%;
+	padding: 10px;
+	color: rgb(255, 255, 255);
+}
+
 /*#divFiltradoMsj{
 	display: none;
 	z-index: 500;

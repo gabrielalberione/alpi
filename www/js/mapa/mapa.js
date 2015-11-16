@@ -34,9 +34,7 @@ var ban_estado_conexion = true;
 
 
 $( document ).ready( function() { 
-    var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
-	inicializar(); 
-	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
+	inicializar();     
 });
 $( window ).resize( function() { 
 	$('#map').css("height", $( window ).height());

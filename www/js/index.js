@@ -52,12 +52,9 @@ var onSuccessGPS = function(position) {
 // onError Callback receives a PositionError object
 //
 function onErrorGPS(error) {
-	if(error.code == 3){
-		var divEstado = document.getElementById("estado_gps");
-		divEstado.setAttribute('style', 'display:block;');	
-	}
-   alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n'); 
+	var divEstado = document.getElementById("estado_gps");
+	divEstado.setAttribute('style', 'display:block;');	
+	window.MyCls.changeActivity();
 }
 
 function onSuccess(position) {

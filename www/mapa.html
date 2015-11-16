@@ -58,8 +58,9 @@
     <div id="estado_conexion">
     	<i class="fa fa-exclamation-triangle" style="margin-right: 5px; color:#D5D412;"></i>Problemas de red, verifique su conexión a internet...
     </div>
-    <div id="estado_gps">
-    	<i class="fa fa-exclamation-triangle" style="margin-right: 5px; color:#D5D412;"></i>GPS desactivado, activelo para saber su posición... 
+    <div id="estado_gps" onClick="actualizar()">
+    	<i class="fa fa-exclamation-triangle" style="margin: 5px; margin-right: 15px; color:#D5D412;"></i>GPS desactivado, activelo para saber su posición... 
+        <i class="fa fa-refresh" style="float: right; margin: 5px;"></i>
     </div>    
 	<div class="snap-drawers">
          <div class="snap-drawer snap-drawer-left">
@@ -167,11 +168,11 @@
 			disable: 'right'
 		});				
 		var mySlidebars;
-		var jAlertSugerencias;
-		app.initialize();		
+		var jAlertSugerencias;	
  	 	bandera_divInfoEntidadDetalle = false;
 		(function($) {
 			$(document).ready(function() {				
+				app.initialize();	
 				//mySlidebars = new $.slidebars();
 				/*var busqueda = window.localStorage.getItem("busqueda");
 				if(busqueda != ""){
@@ -182,6 +183,7 @@
 					
 				verifConexion = setInterval(function() {
 					verificiarConexion();	
+					navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
 				}, 5000);
 				
 				$('#btn_menu').click(function(e) {
@@ -305,6 +307,10 @@
 				});
 			});
 			/**/
+		}
+		
+		function actualizar(){
+			location.reload();
 		}
 
  			
