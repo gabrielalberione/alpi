@@ -1,0 +1,130 @@
+<style>
+	/* rb = resultado busqueda */
+	.rb_contenedor_icono{
+		float: left; 
+		position: absolute; 
+		margin-top: 12px;
+		vertical-align: middle;
+	}
+	
+	.rb_contenedor_icono img{
+		max-height: 32px;
+	}
+	
+	.rb_contenedor_info{
+		border-bottom: 1px solid #E0E0E0;
+		margin-left: 40px;
+		padding: 10px 0px;
+	}
+	
+	.rb_contenedor_info span{
+		cursor: pointer;
+		color: #626262;
+	}
+	
+</style>
+<html>
+    <div id="divResultadoBusqueda"></div>
+    
+    <script type="text/javascript">
+	var cerrarMensajeResultado;
+    $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
+    if (($('#inputBusqueda').val().length > 2) || ($('#selectRubrosBusqueda').val() != -1)){
+        var condicion = " nombre iLIKE '%"+$('#inputBusqueda').val()+"%' ";
+		var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
+		var geomActual = pos4326[0]+","+pos4326[1];
+		if ($('#selectRubrosBusqueda').val() != -1){
+			condicion += " AND lugaresoficiales_rubro_id = "+$('#selectRubrosBusqueda').val();
+		}
+		
+		var sourceNuevo = new ol.source.GeoJSON({
+			projection: 'EPSG:3857',
+			url: urlGeoJson+'?busqueda='+condicion+'&posactual='+geomActual
+		});
+		layerLugaresOficiales.setSource(sourceNuevo);
+		
+		$('#divFiltradoMsj').show();
+		
+        $.getJSON( urlGeoJson,{busqueda:condicion, posactual:geomActual}, function( data ) {
+			
+			$("#cargando").hide();
+		
+            var items = [];
+            $.each( data.features, function( key, val ) {
+                var feature = data.features[key];
+                var coord = ol.proj.transform(feature.geometry.coordinates,'EPSG:4326','EPSG:3857');
+                var html = "<div onclick='snapper.close(\"left\");  ubicarEnMapa("+coord[0]+","+coord[1]+")'>";
+                html += '<div class="rb_contenedor_icono"><img src="'+urlHost+'/files/icons_layers/lugaresoficiales_rubro_'+feature.properties.rubro_id+'.png'+'"></im></div>';                                                    
+                html += '<div class="rb_contenedor_info">';
+				html += '<span><b>'+feature.properties.nombre+'</b></span><br>';
+				html += '<span>'+feature.properties.rubro+'</span><br>';
+				var ciudad = '';
+				if (feature.properties.ciudad != null){
+					ciudad += feature.properties.ciudad;
+				}
+				if (feature.properties.provincia != null){
+					ciudad += ' - '+feature.properties.provincia;
+				}
+				if (feature.properties.pais != null){
+					ciudad += ' - '+feature.properties.pais;
+				}
+				
+				if (ciudad != ''){
+					html += '<span>'+ciudad+'</span><br>';
+				}
+				
+				var distancia = feature.properties.distancia; 
+				distancia = Math.round(distancia * 100) / 100;
+				if (distancia > 1000) {
+					distancia = (Math.round(distancia / 1000 * 100) / 100) +
+					' ' + 'km';
+				} else {
+					distancia = (Math.round(distancia * 100) / 100) +
+					' ' + 'm';
+				}
+				html += '<span style="font-size: 11px;"><b>Distancia: '+distancia+'</b></span>';
+				html += '</div>';
+                html += "</div>";
+                items.push( html );
+            });
+            
+            if (items.length > 0){
+                var html = '<div><span class="menu_opciones" style="margin-top: 10px;"><b>Resultados: </b></span>';
+                html += items.join( "" );
+                html += '</div>';
+                $('#divResultadoBusqueda').html(html);
+            } else{
+                var html = '<div class="alert alert-warning" role="alert">';
+                //html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size: 28px">&times;</span></button>';
+                html += 'No se han encontrado resultados.';
+                html += '</div>';
+                $('#divResultadoBusqueda').html(html);
+				/**
+				cerrarMensajeResultado = setInterval(function() {
+					$('#divResultadoBusqueda').hide(500, function(){
+						$('#divResultadoBusqueda').html("");
+						$('#divResultadoBusqueda').show();
+					});
+					clearInterval(cerrarMensajeResultado);
+				}, 3000);
+				/**/
+            }
+    
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+			$('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Error de conexión.</div>');
+		});
+    } else{
+        $('#divResultadoBusqueda').html('<div class="alert alert-danger" role="alert">Seleccione un rubro o ingrese 3 o más caracteres.</div>');
+		/**
+		cerrarMensajeResultado = setInterval(function() {
+			$('#divResultadoBusqueda').hide(500, function(){
+				$('#divResultadoBusqueda').html("");
+				$('#divResultadoBusqueda').show();
+			});
+			clearInterval(cerrarMensajeResultado);
+		}, 3000);
+		/**/
+		$("#cargando").hide();
+    }
+    </script>
+</html>
